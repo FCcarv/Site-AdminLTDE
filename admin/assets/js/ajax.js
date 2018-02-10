@@ -17,21 +17,24 @@ $(function(){
             beforeSend: function(data) {
                  
                 $.each(alerts, function(key, value) {
-                    $('.alert').removeClass(value);
+                    $('.alerta').removeClass(value);
                 });
-                $(".fa").addClass("fa-spinner fa-spin");  
-                     /*$.each(alerts, function(key, value) {
-                    $('.icones').removeClass(value);
-                });*/
                 
+                $.each(icones,function(key, value) {
+                    $('.icones').removeClass(value);
+                });
+
+                $(".fa").addClass("fa-spinner fa-spin");  
                
             },
-            success: function(data) {
+            success:function(data){
                 $(".fa").removeClass("fa-spinner fa-spin");
                 
                   if (data.retorno) {
-                    $('.alert').addClass(data.retorno[0]);
-                    $('.result').html(data.retorno[1]);
+                    $('.alerta').addClass(data.retorno[0]);
+                    $('.icones').addClass(data.retorno[1]);//icone tem que passar no indice 1
+                    $('.titulo').html(data.retorno[2]);//Titulo no indice 2
+                    $('.result').html(data.retorno[3]);//Mensagem de retorno no indice 3
                 }
                   
                 /*Redirecionar*/

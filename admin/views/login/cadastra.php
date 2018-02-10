@@ -36,8 +36,8 @@
             <div class="register-box-body">
                 <p class="login-box-msg">Cadastrar-se e torne um novo usuário!</p>
 
-                <div class="alert ">
-                    <h4><i class="icones"></i><span class="titulo"></span></h4>
+                <div class="alerta ">
+                    <h4><i class="icon icones"></i><span class="titulo"></span></h4>
                     <div class="result"></div>
                 </div>
 
@@ -59,13 +59,13 @@
                         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <!-- <div class="checkbox icheck">
+                          <!-- <div class="col-xs-8">
+                          <div class="checkbox icheck">
                                 <label>
                                     <input type="checkbox"> I agree to the <a href="#">terms</a>
                                 </label>
-                            </div> /.col -->
-                        </div>
+                            </div> 
+                        </div>/.col -->
 
                         <div class="col-xs-4">
                             <div class="form-group">
@@ -108,7 +108,7 @@
             });
         </script>
         <script>
-            var BASE = '<?= BASEADMIN ?>';
+            var BASE ='<?= BASEADMIN ?>';
         </script>
         <script src="<?= BASEADMIN ?>assets/js/ajax.js"></script>
     </body>

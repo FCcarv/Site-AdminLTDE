@@ -19,10 +19,11 @@ class loginController extends Controller{
     
      public function add(){
         $dados = [];
-
-        $dados['retorno'] = ['alert-info','esse teste nao funciona'];
+                                   //0                     1           2                    3
+        //$dados['retorno'] = ['alert alert-danger', 'fa fa-info','Opa esse é o Titulo','Deu Certo'];
+        $dados['retorno'] = Alert::AjaxInfo("Senha com 6 a 8 digitos","Presta atenção");
         
       echo json_encode($dados);
-      
+      exit;
     }
 }
