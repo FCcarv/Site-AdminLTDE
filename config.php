@@ -9,10 +9,10 @@ if (ENVIRONMENT == 'development') {
     define("BASE", "http://localhost/Fatiando-AdminLTE/");
     define("BASEADMIN", "http://localhost/Fatiando-AdminLTE/admin/");
     // DEFINE SERVIDOR DE E-MAIL ##################
-    define('MAILUSER','contazf@institutozfriggi.com.br');
-    define('MAILPASS','instz2017');//EMAIL FTP
+    define('MAILUSER','');
+    define('MAILPASS','');//EMAIL FTP
     define('MAILPORT','587');
-    define('MAILHOST','smtp.institutozfriggi.com.br');
+    define('MAILHOST','');
         // CONTANTES BANCO ##################
     $config['dbname'] = 'banco-zfg';
     $config['host'] = 'localhost';
