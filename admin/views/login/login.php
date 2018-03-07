@@ -34,15 +34,19 @@
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">Faça login para iniciar a sessão</p>
+                    <p class="login-box-msg">Faça login para iniciar a sessão</p>
+                <div class="alerta ">
+                    <h4><i class="icon icones"></i><span class="titulo"></span></h4>
+                    <div class="result"></div>
+                </div>
 
-                <form action="../../index2.html" method="post">
+                <form class="form" method="post" id="login/log">
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control"name="email_us" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" name="pass_us"placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
@@ -55,7 +59,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Logar</button>
+                            <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa"></i>Logar</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -68,7 +72,7 @@
                         Google+</a>
                 </div>
                .social-auth-links -->
-                <a href="#">Esqueci minha senha</a><br>
+                <a href="<?= BASEADMIN ?>login/key">&larrhk;Esqueci minha senha</a><br>
                 <a href="<?= BASEADMIN ?>login/cadastra" class="text-center">Cadastrar-se </a>
 
             </div>

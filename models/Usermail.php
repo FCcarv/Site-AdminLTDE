@@ -1,14 +1,14 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: francisco
- * Date: 05/03/18
- * Time: 08:04
+ * Date: 06/03/18
+ * Time: 16:02
  */
 
-class Email extends Model
+class Usermail extends Model
 {
-
     /** @var PHPMailer */
     private $Mail;
     private $Host;
@@ -19,8 +19,6 @@ class Email extends Model
 
     private $User;
 
-
-
     /** EMAIL DATA */
     private $Data;
 
@@ -28,22 +26,14 @@ class Email extends Model
     private $Assunto;
     private $Mensagem;
 
-    /** REMETENTE */
-    private $RemetenteNome;
-    private $RemetenteEmail;
-
     /** DESTINO */
     private $DestinoNome;
     private $DestinoEmail;
 
-    public function __construct()
+    public function envio()
     {
-        require_once('../library/PHPMailer/class.phpmailer.php');
-        require_once('../library/PHPMailer/class.smtp.php');
+
         $this->Mail = new PHPMailer();
-        $this->Mail->SetLanguage("br");
-        $this->Mail->IsSMTP();
-        $this->Mail->SMTPAuth = true;
         $this->Mail->Host = MAILHOST;//endereço de envio do smtp
         $this->Mail->Port = MAILPORT;//porta de envio
         $this->Mail->Username = MAILUSER;//e mail criado do servidor e
@@ -75,7 +65,7 @@ class Email extends Model
             $sql->bindValue(":hash",        $this->User['hash']);
             $sql->bindValue(":expirado_em", $this->User['expirado_em']);
             $sql->bindValue(":iduser",      $this->User['id_user']);
-            $sql->execute();
+            //$sql->execute();
 
 
             return '1';
@@ -103,11 +93,9 @@ class Email extends Model
     public function setMsgRec() {
         $token  = $this->User['hash'];
         $Id     = $this->User['id_user'];
-        $link = HOME."/redSenha.php?id={$Id}&token={$token}";
+        $link = BASEADMIN."login/recupera/id={$Id}&token={$token}";
         $this->Mensagem = "Clique no link para redefinir sua senha:<br/>".$link;
 
-
-        //$this->Mensagem = "{$this->Mensagem}<hr><small>Recebida em: " . date('d/m/Y H:i') . "</small>";
     }
 
     //Configura o PHPMailer e valida o e-mail!
@@ -115,7 +103,7 @@ class Email extends Model
         //SMTP AUTH
         $this->Mail->IsSMTP();
         $this->Mail->SMTPAuth = true;
-        $this->Mail->IsHTML();
+        $this->Mail->IsHTML(true);
 
         //REMETENTE E RETORNO
         $this->Mail->From = MAILUSER;
@@ -125,9 +113,9 @@ class Email extends Model
         //ASSUNTO, MENSAGEM E DESTINO
         $this->Mail->Subject = $this->Assunto;
         $this->Mail->Body .= "Seguem os dados para redefinir sua senha:<br /><br />
-								
-							 <strong>Obs:</strong> Você não precisa responder este e-mail.
-							 <strong>$this->Mensagem</strong>";
+                               
+                             <strong>Obs:</strong> Você não precisa responder este e-mail.
+                             <strong>$this->Mensagem</strong>";
         $this->Mail->AddAddress($this->DestinoEmail, $this->DestinoNome);//aqui é usado um outro email do dominio pra enviar respostas e com nome personalizado se preferir
     }
 
@@ -143,33 +131,4 @@ class Email extends Model
 
     }
 
-    /*public function paramEnvia($email,$nome,$ddd,$telefone,$assunto, $mensagem)
-    {
-        $this->Mail->IsHTML(true);
-        $this->Mail->From = 'contato@wesleydesign.com.br';
-        $this->Mail->FromName = utf8_decode($email);
-        $this->Mail->AddReplyTo($email, $nome);
-        $this->Mail->AddAddress("contato@wesleydesign.com.br");
-        $this->Mail->Subject = "(Contato do site - seudominio.com.br)";
-        $this->Mail->Body .= "<br /><br />
-							 <strong>Nome:</strong> $nome<br /><br />
-							 <strong>E-mail:</strong> $email<br /><br />
-							 <strong>Telefone:</strong> $ddd - $telefone<br /><br />
-							 <strong>Assunto:</strong> $assunto<br /><br />
-							 <strong>Mensagem:</strong><br /> 
-			$mensagem = '<img src='" . BASE . "assets/img/capa-min.png' alt='Capa do Canal' title='Capa do Site' /><br />"
-            . "O email recebido foi de: <strong>{$dados_form['email']}</strong><br />"
-            . "Mensagem: {$dados_form['msg']}'";
-
-
-
-        if (!$this->Mail->Send()) {
-            echo "<p>A mensagem não foi enviada. </p>";
-            echo "Erro: " . $this->Mail->ErrorInfo;
-        } else {
-            echo "<script>location.href='sucesso.html'</script>";
-
-        }
-
-    }*/
 }

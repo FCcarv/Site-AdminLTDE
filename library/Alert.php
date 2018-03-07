@@ -36,7 +36,7 @@ class Alert
         if ($titulo != ''){
             return ["alert alert-warning","fa fa-warning", $titulo, $msg];
         }
-            return ["alert alert-warning", "fa fa-warning", "Alerta!", $msg];  
+            return ["alert alert-warning", "fa fa-warning", "Atenção!", $msg];  
 
     }
     
@@ -47,5 +47,14 @@ class Alert
         }
             return ["alert alert-danger", "fa fa-ban", "Error!", $msg];  
 
+    }
+    
+        public static function AjaxRedirect($praOnde, $tempo = null)
+    {
+        if ($tempo != null):
+            return [$praOnde, $tempo];
+        else:
+            return [$praOnde, 3200];
+        endif;
     }
 }

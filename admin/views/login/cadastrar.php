@@ -47,7 +47,7 @@
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="text" name="sobrenome_us"  class="form-control" placeholder="Nome">
+                        <input type="text" name="sobrenome_us"  class="form-control" placeholder="Sobrenome">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

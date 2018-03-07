@@ -43,6 +43,8 @@ $(function(){
                         window.location.href = BASE + data.redirect[0];
                     }, data.redirect[1]);
                 }
+                
+                
             }
         });
         return false;
