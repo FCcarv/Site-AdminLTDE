@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 /**
  * PHPMailer exception handler

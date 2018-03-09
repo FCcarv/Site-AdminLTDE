@@ -32,43 +32,14 @@
 <div class="login-box">
     <div class="login-logo">
         <b>Admin</b>LTE</a>
-        <p>Redefina sua senha</p>
+        <p>Redefinir senha</p>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Digite a nova senha</p>
-        <div class="alerta ">
-            <h4><i class="icon icones"></i><span class="titulo"></span></h4>
-            <div class="result"></div>
-        </div>
 
-        <form class="form" method="post" id="login/newSenha">
-            <div class="form-group has-feedback">
-                <input type="hidden" name="token" value="<?= $token; ?>">
-                <input type="hidden" name="id_user" value="<?= $id_user; ?>">
-                <input type="password" class="form-control" name="pass_us" placeholder="Password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa"></i>Enviar</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
+    <div class="alerta alert <?= $alerta; ?>">
+        <h4><i class="icon icones fa fa-ban"></i><span class="titulo"> <?= $titulo; ?></span></h4>
+        <div class="result" style="text-align:center;"><?= $retorno; ?></div>
     </div>
-    <!-- /.login-box -->
-    <!-- jQuery 3 -->
-    <script src="<?= BASEADMIN ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="<?= BASEADMIN ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="<?= BASEADMIN ?>assets/plugins/iCheck/icheck.min.js"></script>
-
-    <script>
-        var BASE = '<?= BASEADMIN ?>';
-    </script>
-    <script src="<?= BASEADMIN ?>assets/js/ajax.js"></script>
+</div>
 </body>
 </html>

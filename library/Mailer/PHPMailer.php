@@ -26,7 +26,7 @@
  * @author Brent R. Matzelle (original founder)
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 class PHPMailer {
 

@@ -1,58 +1,77 @@
 <?php
 
 /**
- * Created by PhpStorm.
  * User: francisco
  * Date: 06/03/18
  * Time: 16:02
+ *
+ * CLASSE RESPONSAVEL POR BUSCAR INFORMAÇÕES DO USUARIO , DE MODO QUE O MESMO
+ * MANIPULE SEUS DADOS COMO ATUALIZAÇÃO DE SENHA USANDO O SEU EMAIL CADASTRADO NO SISTEMA.
  */
-
-class Usermail extends Model
-{
-    /** @var PHPMailer */
-    private $Mail;
-    private $Host;
-    private $Port;
-    private $Username;
-    private $Password;
-    private $CharSet;
+class Usermail extends Model {
 
     private $User;
 
-    /** EMAIL DATA */
-    private $Data;
-
-    /** CORPO DO E-MAIL */
-    private $Assunto;
-    private $Mensagem;
-
-    /** DESTINO */
-    private $DestinoNome;
-    private $DestinoEmail;
-
-    public function envio()
-    {
-
-        $this->Mail = new PHPMailer();
-        $this->Mail->Host = MAILHOST;//endereço de envio do smtp
-        $this->Mail->Port = MAILPORT;//porta de envio
-        $this->Mail->Username = MAILUSER;//e mail criado do servidor e
-        $this->Mail->Password = MAILPASS;// senha criada do servidor
-        $this->Mail->CharSet = 'UTF-8';
-    }
-
-    public function setToken(array $Data)
-    {
-        $sql = $this->db->prepare("SELECT * FROM users WHERE email_user = :email");
-        $sql->bindValue(":email",$Data['email_us']);
+/*METODO COMA FUNÇÃO DE BUSCAR O TOKEN ENVIADO VIA LINK DO EMAIL DO USURAIO E
+ * VAILDAR E VERIFICAR NO BANCO DE DADOS SE É UM TOKEN VÁLIDO E PEGAR O ID DO USUARIO CADASTRADO
+ * NO SISTEMA.
+ * */
+    public function redefinirSenha($token) {
+        $sql = "SELECT * FROM tokens_users WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(":hash", $token);
         $sql->execute();
 
-        //print_r($sql->fetch());exit;
+        try {
+            if ($sql->rowCount() > 0) {
+                $sql = $sql->fetch();
+                return $sql['id_user'];
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+/*METODO RESPONSAVEL POR ATULIZAR A SENHA USADONDO  O ID DO USUARIO.
+ * */
+    public function updateSenha($id, $senha) {
+        $sql = "UPDATE users SET pass_user = :senha WHERE id_user = :id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(":senha", password_hash($senha, PASSWORD_BCRYPT));
+        $sql->bindValue(":id", $id);
+        try {
+            $sql->execute();
+            return true;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
 
-        if($sql->rowCount() > 0) {
+/*METODO RESPONSAVEL POR DESABILITAR O TOKEN USADO PARA ATULIAZAR A SENHA.
+ * DE MODO QUE O MESMO SO POSSA  SER USADO APENAS UMA UNICA VEZ.
+ * */
+    public function updateStatusToken($token) {
+        $sql = "UPDATE tokens_users SET used = 1 WHERE hash = :hash";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(":hash", $token);
+        try {
+            $sql->execute();
+            return true;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+    /*
+     *SELECIONA E CONFIRMA O EMAIL DO USUARIO  NO BANCO DE DADOS
+     *E CRIA UM TOKEN QUE SERA ENVIADO AO EMAIL DO USÚARIO PARA REDEFINIÇÃO DE SENHA.
+     */
+    public function setToken($fieldEmail) {
+        $sql = $this->db->prepare("SELECT * FROM users WHERE email_user = :email");
+        $sql->bindValue(":email", $fieldEmail);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
             $sql = $sql->fetch();
             $idus = $sql['id_user'];
-
 
             $token = md5(time() . rand(0, 99999) . rand(0, 99999));
 
@@ -60,75 +79,27 @@ class Usermail extends Model
             $this->User['expirado_em'] = date('Y-m-d H:i', strtotime('+1 months'));
             $this->User['id_user'] = $idus;
 
-
             $sql = $this->db->prepare("INSERT INTO tokens_users (hash, expirado_em, id_user) VALUES (:hash, :expirado_em, :iduser)");
-            $sql->bindValue(":hash",        $this->User['hash']);
+            $sql->bindValue(":hash", $this->User['hash']);
             $sql->bindValue(":expirado_em", $this->User['expirado_em']);
-            $sql->bindValue(":iduser",      $this->User['id_user']);
-            //$sql->execute();
+            $sql->bindValue(":iduser", $this->User['id_user']);
+            $sql->execute();
 
-
-            return '1';
-
-        }else{
-
-            return '0';
+            if ($sql->rowCount() == 1) {
+                return true;
+            }
         }
     }
 
-    /*Metodo responsavel pelas configurações do email*/
-//Recupera e separa os atributos pelo Array Data.
-    public function setMailRec() {
-
-        $this->Assunto       = $this->Data['Assunto'];
-        $this->RecuperaEmail = $this->Data['RecuperaEmail'];
-        $this->DestinoNome   = $this->Data['DestinoNome'];
-        $this->DestinoEmail  = $this->Data['DestinoEmail'];
-
-        $this->Data = null;
-        $this->setMsgRec();
-    }
-
-    //Formatar ou Personalizar a Mensagem!
+     /*
+     *PEGA O TOKEN CRIADOEM OUTRO  METODO setToken
+      * E DEFINI O LINK QUE SERA MANDADO PRA O USUARIO PARA DEFINIR UMA NOVA SENHA
+     */
     public function setMsgRec() {
-        $token  = $this->User['hash'];
-        $Id     = $this->User['id_user'];
-        $link = BASEADMIN."login/recupera/id={$Id}&token={$token}";
-        $this->Mensagem = "Clique no link para redefinir sua senha:<br/>".$link;
-
-    }
-
-    //Configura o PHPMailer e valida o e-mail!
-    public function Config() {
-        //SMTP AUTH
-        $this->Mail->IsSMTP();
-        $this->Mail->SMTPAuth = true;
-        $this->Mail->IsHTML(true);
-
-        //REMETENTE E RETORNO
-        $this->Mail->From = MAILUSER;
-        //$this->Mail->FromName = $this->id_Data;
-        $this->Mail->AddReplyTo($this->RecuperaEmail);//, $this->RemetenteNome);//campos do formulario
-
-        //ASSUNTO, MENSAGEM E DESTINO
-        $this->Mail->Subject = $this->Assunto;
-        $this->Mail->Body .= "Seguem os dados para redefinir sua senha:<br /><br />
-                               
-                             <strong>Obs:</strong> Você não precisa responder este e-mail.
-                             <strong>$this->Mensagem</strong>";
-        $this->Mail->AddAddress($this->DestinoEmail, $this->DestinoNome);//aqui é usado um outro email do dominio pra enviar respostas e com nome personalizado se preferir
-    }
-
-    //Envia o e-mail!
-    public function sendMailRec() {
-        if ($this->Mail->Send() > 0){
-            return '1';
-
-        }else{
-
-            return '0';
-        }
-
+        $token = $this->User['hash'];
+        $Id = $this->User['id_user'];
+        $link = BASEADMIN . "login/recuperar/{$token}";
+        return "Clique no link para redefinir sua senha:<br/>" . $link;
     }
 
 }

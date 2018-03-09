@@ -25,7 +25,7 @@
  * @link https://github.com/thephpleague/oauth2-client
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 class PHPMailerOAuthGoogle {
 

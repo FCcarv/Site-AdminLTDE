@@ -24,7 +24,7 @@
  * @author Marcus Bointon (@Synchro) <phpmailer@synchromedia.co.uk>
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 class PHPMailerOAuth extends PHPMailer {
 

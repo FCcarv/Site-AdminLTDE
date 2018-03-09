@@ -66,7 +66,7 @@ class usersController extends Controller
             //Se todos os campos foram preenchidos vamos continuar
             if (Check::isMail($dadosPerm['email_us'])) {
                 //se o email passado é válido então vamos continuar
-                if (isset($dadosPerm['pass_us']) && (strlen($dadosPerm['pass_us']) > 6 && strlen($dadosPerm['pass_us']) <= 8)) {
+                if (isset($dadosPerm['pass_us']) && (strlen($dadosPerm['pass_us']) >= 6 && strlen($dadosPerm['pass_us']) <= 8)) {
                     //se a senha estiver com a qtd de caracteres entre 6 e 9 então vamos continuar
                     $nome_us = $dadosPerm['nome_us'];
                     $sobrenome_us = $dadosPerm['sobrenome_us'];

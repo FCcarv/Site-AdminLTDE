@@ -4,31 +4,27 @@
  * User: francisco
  * Date: 24/02/18
  * Time: 08:55
+ *
+ *
+ * CLASSE RESPONSÁVEL POR  MANIPULAR E TRATAR  TODAS INFORMAÇÕES DOS USUÁRIOS DO SISTEMA.
  */
 class Users extends Model
 {
-
     private $Table = "users";
     private $Result = null;
     private $Info_us;
     private $Permissoes;
     private $User;
     private $Data;
-
-
-
-
-
-
-
+    private $Pass;
 
     public function getResult() {
         return $this->Result;
     }
 
     /*
-     * Verifica se existe a sessao no sistema
-     * */
+     * VERIFICA SE EXISTE  SESSAO CRIADA NO SISTEMA
+     */
     public function isLogado()
     {
         if(isset($_SESSION['userlogin']) && !empty($_SESSION['userlogin'])){
@@ -38,7 +34,9 @@ class Users extends Model
         }
     }
 
-
+/*
+ * BUSCAR INFORMAÇÕES DO USUARIO LOGADO NO SISTEMA NO BANCO DE DADOS E RETORNA SEU ID.
+ * */
     public function getInfo($id) {
         $array = array();
 
@@ -49,10 +47,10 @@ class Users extends Model
         if($sql->rowCount() > 0) {
             $array = $sql->fetch();
         }
-
-        return $array;
+      return $array;
     }
-
+/*LISTA  OS USUÁRIOS DO SISTEMA E OS SEUS GRUPOS DE PERMISSAO ASSOSSIADOS COM O MESMO.
+*/
     public function getListUsers($id){
 
     $array = array();
@@ -79,9 +77,9 @@ class Users extends Model
    }
 
    /*
-     * Retorna se exite e a quantidade de usuarios em um Grupo de Permissaão.
-     * Esse metodo é usado no model Permissaso
-     * */
+    * RETORNA SE EXITE E A QUANTIDADE DE USUARIOS EM UM GRUPO DE PERMISSAÃO.
+     * ESSE METODO É USADO NO MODEL PERMISSASO
+     */
     public function findUsersInGroup($id) {
 
         $sql = $this->db->prepare("SELECT COUNT(*) as c FROM " . $this->Table ." WHERE id_grup_permissao = :idgrup");
@@ -96,7 +94,8 @@ class Users extends Model
         }
     }
 
-    /*Checa o email e retorna true ou false*/
+    /*CHECA O EMAIL E RETORNA TRUE OU FALSE
+    */
     public function checkByEmail($email) {
         $sql = $this->db->prepare("SELECT * FROM " . $this->Table ." WHERE email_user = :email LIMIT 1");
         $sql->bindValue(":email",$email,PDO::PARAM_STR);
@@ -113,7 +112,8 @@ class Users extends Model
 
     }
 
-/*TEm a responsabilidade de cadastrar usuarios , com permissao maxima de usuario ADMIN*/
+    /*TEM A RESPONSABILIDADE DE CADASTRAR USUARIOS , COM PERMISSAO MAXIMA DE USUARIO ADMIN
+    */
     public function add($nome_us,$sobrenome_us,$email_us,$pass_us,$grup_us) {
         $mail_Id = $this->checkByEmail($email_us);
         if ($mail_Id == 0){
@@ -132,7 +132,8 @@ class Users extends Model
         }
 
     }
-    /*Faz uma busca a usuarios que não esta logoda , é usado no metodo insertUser do userscontrolle*/
+    /*FAZ UMA BUSCA A USUARIOS QUE NÃO ESTA LOGODA , É USADO NO METODO INSERTUSER DO USERSCONTROLLE
+    */
     public function getUserInfo($id_us)
     {
         $array = array();
@@ -145,9 +146,10 @@ class Users extends Model
             $array = $sql->fetch();
         }
 
-        return $array;
+      return $array;
     }
-/*Tem a responsabilidade  de atualizar os usuarios do sistema , somente logado como ADMIN em nivel maximo de permissao*/
+    /*TEM A RESPONSABILIDADE  DE ATUALIZAR OS USUARIOS DO SISTEMA , SOMENTE LOGADO COMO ADMIN EM NIVEL MAXIMO DE PERMISSAO
+    */
     public function edit($nome_us, $sobrenome_us, $pass_us, $grup_us,$id_us) {
         $sql = $this->db->prepare("UPDATE users SET nome_user = :nome_us, sobrenome_user = :sobrenome_us, id_grup_permissao = :id_grup 
           WHERE id_user = :id_us");
@@ -158,7 +160,6 @@ class Users extends Model
         $sql->bindValue(":id_us", $id_us);
         $sql->execute();
 
-
         if(!empty($pass_us)) {
             $sql = $this->db->prepare("UPDATE users SET pass_user = :pass_us WHERE id_user = :id_us ");
             $sql->bindValue(":pass_us", password_hash($pass_us, PASSWORD_BCRYPT), PDO::PARAM_STR);
@@ -167,16 +168,18 @@ class Users extends Model
 
         }
     }
-/*Exclui usuarios do sistema ,massomente logado como Admin em nivel maximo*/
-    public function delete($id_us) {
+
+    /*EXCLUI USUARIOS DO SISTEMA ,MASSOMENTE LOGADO COMO ADMIN EM NIVEL MAXIMO
+     */
+ public function delete($id_us) {
         $sql = $this->db->prepare("DELETE FROM users WHERE id_user = :id");
         $sql->bindValue(":id", $id_us);
         $sql->execute();
     }
 
-
-/*Tem  a respomsabolidade de logar e direcionar o usuario a entrar no sistema*/
-    public function login($dados_form)//senha $2y$10$6To/SbFMQCZXt.FdNwc.puUDf1nW/iY14iRtDKvv3X.0eszl6zegu
+    /*TEM  A RESPOMSABILIDADE DE LOGAR E DIRECIONAR O USUARIO A ENTRAR NO SISTEMA
+    */
+    public function login($dados_form)
     {
         if ($this->checkByEmail($dados_form['email_us'])) {
             $passwordBD = $this->getResult()['pass_user'];
@@ -186,9 +189,8 @@ class Users extends Model
             }
         }
     }
-
-    /*Recupera o usuario logado e e sua sessão atraves do seu ID
-     * */
+    /*RECUPERA O USUARIO LOGADO E E SUA SESSÃO ATRAVES DO SEU ID
+     */
     public function setLogUser()
     {
         if(isset($_SESSION['userlogin']) && !empty($_SESSION['userlogin'])){
@@ -207,12 +209,12 @@ class Users extends Model
         }
     }
 
-    /*TEm a responsabilidade de cadastrar usuarios ,sem qualquer tipo de permissao no sistemae e filiação de grupos de permissao*/
+    /*TEM A RESPONSABILIDADE DE CADASTRAR USUARIOS ,
+    *SEM QUALQUER TIPO DE PERMISSAO NO SISTEMA E FILIAÇÃO DE GRUPOS DE PERMISSAO
+    */
     public function LoginCreate($dados_form)
     {
         $sql = $this->db->prepare("INSERT INTO users SET nome_user = :nome_us, sobrenome_user = :sobrenome_us, email_user= :email_us, pass_user =:pass_us, id_grup_permissao = :id_grup");
-
-
         $dados_form['grup_us'] = 0;
 
         $sql->bindValue(":nome_us",               $dados_form['nome_us'],PDO::PARAM_STR);
@@ -232,63 +234,8 @@ class Users extends Model
         }
     }
 
-    public function selectById($id) {
-        $sql = $this->db->prepare("SELECT * FROM " . $this->Table ." WHERE id = :id LIMIT 1");
-        $sql->bindValue(":id",$id,PDO::PARAM_INT);
-        try {
-            $sql->execute();
-            if ($sql->rowCount() > 0) {
-                $this->Result = $sql->fetch();
-                return true;
-            }
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
-    }
-
-
-   /*Checa o email e retorna true ou false*/
-   /* public function setToken(array $Data)
-    {
-
-        $sql = $this->db->prepare("SELECT * FROM users WHERE email_user = :email");
-        $sql->bindValue(":email",$Data['email_us']);
-        $sql->execute();
-
-        //print_r($sql->fetch());exit;
-
-        if($sql->rowCount() > 0) {
-           $sql = $sql->fetch();
-            $idus = $sql['id_user'];
-
-
-            $token = md5(time() . rand(0, 99999) . rand(0, 99999));
-
-
-            $sql = $this->db->prepare("INSERT INTO tokens_users (hash, expirado_em, id_user) VALUES (:hash, :expirado_em, :iduser)");
-            $sql->bindValue(":hash", $token);
-            $sql->bindValue(":expirado_em", date('Y-m-d H:i', strtotime('+1 months')));
-            $sql->bindValue(":iduser", $idus);
-            $sql->execute();
-            return '1';
-
-        }else{
-
-            return '0';
-        }
-    }*/
-
-   public function recuperar()
-   {
-
-   }
-
-    public function insertRec() {
-        /*print_r($iduser);
-          exit;*/
-    }
-
-
+    /*PEGA O USUARIO LOGADO PELO ID
+     * */
     public function getId() {
         if(isset($this->userInfo['id_user'])) {
             return $this->userInfo['id_user'];
@@ -296,7 +243,8 @@ class Users extends Model
             return '';
         }
     }
-
+/*RETORNA O USUARIO LOGADO  E SEU EMAIL
+ * */
     public function getEmail() {
         if(isset($this->userInfo['email_user'])) {
             return $this->userInfo['email_user'];
@@ -304,7 +252,9 @@ class Users extends Model
             return '';
         }
     }
-    /* Esse metodo faz logout no sistema*/
+
+    /* ESSE METODO FAZ LOGOUT NO SISTEMA
+    */
     public function logout()
     {
         unset($_SESSION['userlogin']);
@@ -312,100 +262,10 @@ class Users extends Model
         header("Location: " . BASEADMIN . '/login');
     }
 
-    /* Metodo esta sendo replicado do model Permissao, permitindo assim usar dentro
-     do model User a validação de permissao */
+    /* METODO ESTA SENDO REPLICADO DO MODEL PERMISSAO, PERMITINDO ASSIM USAR DENTRO
+     *DO MODEL USER A VALIDAÇÃO DE PERMISSAO
+    */
     public function existPermissao($name) {
         return $this->Permissoes->existPermissao($name);
     }
-
-    public function setToken(array $Data)
-    {
-        $sql = $this->db->prepare("SELECT * FROM users WHERE email_user = :email");
-        $sql->bindValue(":email",$Data['email_us']);
-        $sql->execute();
-
-        //print_r($sql->fetch());exit;
-
-        if($sql->rowCount() > 0) {
-            $sql = $sql->fetch();
-            $idus = $sql['id_user'];
-
-
-            $token = md5(time() . rand(0, 99999) . rand(0, 99999));
-
-            $this->User['hash'] = $token;
-            $this->User['expirado_em'] = date('Y-m-d H:i', strtotime('+1 months'));
-            $this->User['id_user'] = $idus;
-
-
-            $sql = $this->db->prepare("INSERT INTO tokens_users (hash, expirado_em, id_user) VALUES (:hash, :expirado_em, :iduser)");
-            $sql->bindValue(":hash",        $this->User['hash']);
-            $sql->bindValue(":expirado_em", $this->User['expirado_em']);
-            $sql->bindValue(":iduser",      $this->User['id_user']);
-            $sql->execute();
-
-
-            return '1';
-
-        }else{
-
-            return '0';
-        }
-    }
-
-    /*Metodo responsavel pelas configurações do email*/
-//Recupera e separa os atributos pelo Array Data.
-    public function setMailRec() {
-
-        $this->Assunto       = $this->Data['Assunto'];
-        $this->RecuperaEmail = $this->Data['RecuperaEmail'];
-        $this->DestinoNome   = $this->Data['DestinoNome'];
-        $this->DestinoEmail  = $this->Data['DestinoEmail'];
-
-        $this->Data = null;
-        $this->setMsgRec();
-    }
-
-    //Formatar ou Personalizar a Mensagem!
-    public function setMsgRec() {
-        $token  = $this->User['hash'];
-        $Id     = $this->User['id_user'];
-        $link = BASEADMIN."login/recupera/id={$Id}&token={$token}";
-        $this->Mensagem = "Clique no link para redefinir sua senha:<br/>".$link;
-
-    }
-
-    //Configura o PHPMailer e valida o e-mail!
-    public function Config() {
-        //SMTP AUTH
-        $this->Mail->IsSMTP();
-        $this->Mail->SMTPAuth = true;
-        $this->Mail->IsHTML();
-
-        //REMETENTE E RETORNO
-        $this->Mail->From = MAILUSER;
-        //$this->Mail->FromName = $this->id_Data;
-        $this->Mail->AddReplyTo($this->RecuperaEmail);//, $this->RemetenteNome);//campos do formulario
-
-        //ASSUNTO, MENSAGEM E DESTINO
-        $this->Mail->Subject = $this->Assunto;
-        $this->Mail->Body .= "Seguem os dados para redefinir sua senha:<br /><br />
-                               
-                             <strong>Obs:</strong> Você não precisa responder este e-mail.
-                             <strong>$this->Mensagem</strong>";
-        $this->Mail->AddAddress($this->DestinoEmail, $this->DestinoNome);//aqui é usado um outro email do dominio pra enviar respostas e com nome personalizado se preferir
-    }
-
-    //Envia o e-mail!
-    public function sendMailRec() {
-        if ($this->Mail->Send() > 0){
-            return '1';
-
-        }else{
-
-            return '0';
-        }
-
-    }
-
 }

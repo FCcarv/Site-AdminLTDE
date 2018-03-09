@@ -28,7 +28,7 @@
  * @author Andy Prevost (codeworxtech) <codeworxtech@users.sourceforge.net>
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 class POP3 {
 

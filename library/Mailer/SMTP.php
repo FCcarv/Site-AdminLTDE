@@ -25,7 +25,7 @@
  * @author Marcus Bointon <phpmailer@synchromedia.co.uk>
  */
 
-namespace App\Library\Mailer;
+namespace library\Mailer;
 
 class SMTP {
 
