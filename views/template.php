@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv = "content-type" content = "text/html; charset=UTF-8">
-        <title>MVC FRONT</title>
+        <title>Site - AdminLTE</title>
         <link href="<?= BASE; ?>assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="<?= BASE; ?>assets/css/font-awesome.css" rel="stylesheet">
 
@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= BASE; ?>">Luciano Charles</a>
+                    <a class="navbar-brand" href="<?= BASE; ?>">Site</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,7 +43,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo BASEADMIN; ?>">Painel</a></li>
+                        <li><a href="<?= BASEADMIN . 'login/' ?>">Painel</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -57,7 +57,7 @@
 
         <div class="clearfix"></div>
         <div class="footer">
-            <h1>Rodapé do meu site</h1>
+            <h1>Rodapé do site</h1>
         </div>
 
     </body>

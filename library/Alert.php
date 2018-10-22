@@ -54,7 +54,7 @@ class Alert
         if ($tempo != null):
             return [$praOnde, $tempo];
         else:
-            return [$praOnde, 3200];
+            return [$praOnde, 2000];
         endif;
     }
 }

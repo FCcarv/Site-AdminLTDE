@@ -8,7 +8,6 @@
 
 class usersController extends Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -22,7 +21,7 @@ class usersController extends Controller
 
     public function index()
     {
-        $dados = [];
+       $dados = [];
 
         $u = new Users();
         $u->setLogUser();
@@ -37,7 +36,7 @@ class usersController extends Controller
         }
     }
 
-    /*Adicionar usuarios no sistema*/
+/*Chama a view  para adicionar usuarios de modo restrito*/
     public function add()
     {
         $dados = [];
@@ -48,13 +47,14 @@ class usersController extends Controller
         if ($u->existPermissao('users_view')) {
             $permite = new Permissao();
             $dados['grup_List'] = $permite->getGrupList();
-
+            //print_r($_SERVER['DOCUMENT_ROOT']);
+            //echo BASEADMIN.'assets/dist/img/ft-perfil';exit;
             $this->loadTemplate('login/users_Add', $dados);
         }else{
             header("Location: " . BASEADMIN);
         }
     }
-
+    /*Adicionar usuarios no sistema dentro do painel*/
     public function insertUser()
     {
         $dados = [];
@@ -83,56 +83,108 @@ class usersController extends Controller
                     } else {
                         $dados['retorno'] = Alert::AjaxWarning("Usuário já existe!!");
                     }
-
                 } else {
                     $dados['retorno'] = Alert::AjaxWarning("A senha deve ter entre 6 e 8 caracteres!!");
                 }
-
             } else {
                 $dados['retorno'] = Alert::AjaxDanger("O email informado não tem um formato válido!!");
             }
         } else {
             $dados['retorno'] = Alert::AjaxWarning("Por favor preencha todos os campos!!");
         }
-
-        echo json_encode($dados);
-        exit();
-
+    echo json_encode($dados);
+    exit();
     }
 
-    public function edit($id_us)
+/*chama a view dee dição dos usuarios no painel em area restrita*/
+    public function editUS($id_us) {
+        $dados = [];
+        $u = new Users();
+        $permite = new Permissao();
+        $dados['id_user'] = $u->getId();
+
+        $dados['user_info'] = $u->getUserInfo($id_us);//retorna informações do usuario
+        $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
+
+        $this->loadTemplate('login/users_Edit', $dados);
+    }
+
+/*Edita as informações do usuario na area restrita do admin*/
+    public function edit()
     {
         $dados = [];
         $u = new Users();
         $u->setLogUser();
-        $dados['id_user'] = $u->getId();
 
-        if ($u->existPermissao('users_view')) {
-            $permite = new Permissao();
+        if ($u->existPermissao('users_edit')) {
+            $dados = [];
 
-            $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
+            $dadosPerm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+            $id_us = $dadosPerm['id_us'];
 
-            if(isset($dadosPerm['grup_us']) && !empty($dadosPerm['grup_us'])) {
-
-                $nome_us        = $dadosPerm['nome_us'];
-                $sobrenome_us   = $dadosPerm['sobrenome_us'];
-                $pass_us        = $dadosPerm['pass_us'];
-                $grup_us        = $dadosPerm['grup_us'];
-
-                $u->edit($nome_us, $sobrenome_us, $pass_us, $grup_us,$id_us);
-
-                header("Location: ".BASEADMIN."users");
+            $dadoUs = $u->update($dadosPerm,$id_us);
+            if ($dadoUs == true) {
+                $dados['retorno'] = Alert::AjaxSuccess("<b>Usuário editado com sucesso!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("users");
+            } else {
+                $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Usuário!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("users");
             }
-            $dados['user_info'] = $u->getUserInfo($id_us);//retorna informações do usuario
-            $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
-
-            $this->loadTemplate('login/users_Edit', $dados);
         }else{
-            header("Location: " . BASEADMIN);
+          $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."home");
         }
+        echo json_encode($dados);
+        exit;
     }
 
+/*Chama a view de atualização de fotos do painel admin*/
+    public function Ftos($id_us)
+    {
+        $dados = [];
+        $u = new Users();
+        $permite = new Permissao();
+        $dados['id_user'] = $u->getId();
 
+        $dados['user_info'] = $u->getUserInfo($id_us);//retorna informações do usuario
+        $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
+
+        $this->loadTemplate('login/users_Edit', $dados);
+    }
+
+/*Edita e atualiza as fotos do usuario no painel admin*/
+    public function editFotos()
+    {
+        $dados = [];
+        $u = new Users();
+        $u->setLogUser();
+
+        if ($u->existPermissao('users_edit')) {
+            $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
+
+            if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
+                $id_us = $dadosPerm['id_us'];
+                if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
+                    $ftos_us = $_FILES['ftos_us'];
+
+                } else {
+                    $ftos_us = array();
+                }
+                $ft = $u->updateFto($ftos_us, $id_us);
+                if ($ft == true) {
+                    $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!</b>");
+                    $dados['redirect'] = Alert::AjaxRedirect("users");
+                } else {
+                    $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
+                    $dados['redirect'] = Alert::AjaxRedirect("users");
+                }
+            }
+        }else{
+            $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."users");
+        }
+        echo json_encode($dados);
+        exit;
+    }
+    /*Deleta usuarios */
     public function delete($id_us) {
 
         $dados = [];
@@ -150,7 +202,95 @@ class usersController extends Controller
         }else{
             header("Location: " . BASEADMIN);
         }
+    }
 
+/*chama a view de atualização dos dados  do usuario*/
+    public function pefilUser($id_us)
+    {
+        $dados = [];
+        $u = new Users();
+        $permite = new Permissao();
+        $dados['id_user'] = $u->getId();
+
+        $dados['infoUS'] = $u->selectID($id_us);//retorna informações do usuario
+        $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
+
+    //print_r($dados['id_user']);        exit;
+        $this->loadTemplate('login/perfil', $dados);
+   }
+/*atualiza informações do usuario na view perfil*/
+    public function pefilEdit()
+    {
+        $dados = [];
+        $u = new Users();
+        $u->setLogUser();
+
+        if ($u->existPermissao('users_perfil')) {
+            $dados = [];
+
+            $dadosPerm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+            $id_us = $dadosPerm['id_us'];
+
+            $dadoUs = $u->update($dadosPerm,$id_us);
+            if ($dadoUs == true) {
+                $dados['retorno'] = Alert::AjaxSuccess("<b>Usuário editado com sucesso!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("home");
+            } else {
+                $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Usuário!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("home");
+            }
+        }else{
+            $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."home");
+        }
+        echo json_encode($dados);
+        exit;
+    }
+
+/*Edita as fotos na area de perfil do usuario, fora do painel*/
+    public function editFotosPerfil()
+    {
+        $dados = [];
+        $u = new Users();
+        $u->setLogUser();
+
+        if ($u->existPermissao('users_perfil')) {
+            $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
+
+            if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
+                $id_us = $dadosPerm['id_us'];
+                if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
+                    $ftos_us = $_FILES['ftos_us'];
+
+                } else {
+                    $ftos_us = array();
+                }
+                $ft = $u->updateFto($ftos_us, $id_us);
+                if ($ft == true) {
+                    $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!!</b>");
+                    $dados['redirect'] = Alert::AjaxRedirect("users");
+                } else {
+                    $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
+                    $dados['redirect'] = Alert::AjaxRedirect("users");
+                }
+            }
+        }else{
+            $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."users");
+        }
+        echo json_encode($dados);
+        exit;
+    }
+/*Chama a view de usuario da area de perfil fora do painel*/
+    public function FtosPerfil($id_us)
+    {
+        $dados = [];
+        $u = new Users();
+        $permite = new Permissao();
+        $dados['id_user'] = $u->getId();
+
+        $dados['infoUS'] = $u->selectIDses($id_us);//retorna informações do usuario
+        $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
+
+        $this->loadTemplate('login/perfil', $dados);
     }
 
 }

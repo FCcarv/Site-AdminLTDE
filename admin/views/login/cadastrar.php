@@ -7,15 +7,15 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/bootstrap.min.css">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/f-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/Ionicons/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/AdminLTE.min.css">
         <!-- iCheck -->
-        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/plugins/iCheck/square/blue.css">
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/blue.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,13 +59,13 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
-                          <!-- <div class="col-xs-8">
+                          <div class="col-xs-8">
                           <div class="checkbox icheck">
                                 <label>
                                     <input type="checkbox"> I agree to the <a href="#">terms</a>
                                 </label>
                             </div> 
-                        </div>/.col -->
+                        </div>
 
                         <div class="col-xs-4">
                             <div class="form-group">
@@ -93,11 +93,11 @@
         <!-- /.register-box -->
 
         <!-- jQuery 3 -->
-        <script src="<?= BASEADMIN ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="<?= BASEADMIN ?>assets/js/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?= BASEADMIN ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="<?= BASEADMIN ?>assets/js/bootstrap.min.js"></script>
         <!-- iCheck -->
-        <script src="<?= BASEADMIN ?>assets/plugins/iCheck/icheck.min.js"></script>
+        <script src="<?= BASEADMIN ?>assets/js/plugins/icheck.min.js"></script>
         <script>
             $(function () {
                 $('input').iCheck({

@@ -37,11 +37,10 @@
                                 <td><h4><?= date("d-m-y", strtotime($us['registro_user'])); ?></h4></td>
                                 <td><h4><?= $us['nome_grup_permissao']; ?></h4></td>
                                 <td>
-                                    <a href="<?= BASEADMIN ?>users/edit/<?= $us['id_user']; ?>"><span
+                                    <a href="<?= BASEADMIN ?>users/editUs/<?= $us['id_user']; ?>"><span
                                                 class=" btn btn-warning glyphicon glyphicon-edit"> Editar</span></a>
-                                    <a href="<?= BASEADMIN ?>users/delete/<?= $us['id_user']; ?>"
-                                       onclick="return confirm('Tem certeza que deseja excluir?')"><span
-                                                class="btn btn-danger glyphicon glyphicon-trash"> Excluir</span></a>
+                                    <a href="<?= BASEADMIN ?>users/delete/<?= $us['id_user']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">
+                                        <span class="btn btn-danger glyphicon glyphicon-trash"> Excluir</span></a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

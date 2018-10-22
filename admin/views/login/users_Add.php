@@ -10,30 +10,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <aside class="col-md-3">
-                        <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle"
-                                 src="../assets/dist/img/user2-160x160.jpg " alt="User profile picture">
-
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                            <p class="text-muted text-center">Software Engineer</p>
-
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>Followers</b> <a class="pull-right">1,322</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">543</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Friends</b> <a class="pull-right">13,287</a>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-                        </div>
-                    </aside>
-                    <div class="col-md-9">
+                    <div class="col-md-7 col-xs-offset-4 col-xs-offset-3">
                         <div class="nav-tabs-custom ">
                             <div class="tab-pane">
                                 <form class="form" method="post" id="users/insertUser">

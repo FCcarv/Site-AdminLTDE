@@ -90,21 +90,6 @@ class Permissao extends Model
         return $array;
     }
 
-    public function getGroupList($idgrup)
-    {
-        $array = array();
-
-        $sql = $this->db->prepare("SELECT * FROM grup_permissao WHERE id_grup_permissao = :idgrup");
-        bindValue(":idgrup, $idgrup");
-        $sql->execute();
-
-        if($sql->rowCount() > 0) {
-            $array = $sql->fetchAll();
-        }
-
-        return $array;
-    }
-
     /**
      *@Return e seleciona todas as informações dos Grupos de Permissaõ
      */
@@ -122,8 +107,6 @@ class Permissao extends Model
 		}
 
         return $array;
-//        print_r($array);
-//        exit;
     }
     /**
      *Esse metodo adiciona determinada permissao ao usuario
