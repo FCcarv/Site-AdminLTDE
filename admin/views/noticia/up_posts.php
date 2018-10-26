@@ -46,6 +46,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <form class="form" method="post" enctype="multipart/form-data" id="post/edit">
+
                         <div class="col-md-8">
                             </br>
                             <?php
@@ -57,13 +58,15 @@
                               <input type="hidden"  name="id_post" value="<?=$id_post?>">
                             </div>
                             <div class="form-group">
+
                                 <label for="capa">Enviar Capa</label>
                                 <input type="file" class="loadimage" name="cap_post">
                             </div>
                             </br>
                             <div class="form-group">
+                                <input type="text" class="form-control input-lg title_exist" name="title_exist" value="0">
                                 <label for="nome">Titulo</label>
-                                <input type="text" class="form-control input-lg" name="title_post"
+                                <input type="text" class="form-control input-lg title_post" data-controller="post/postExist/" name="title_post"
                                        value="<?= $title_post ?>">
                             </div>
                             <div class="form-group"><!--id input hidden-->
@@ -171,7 +174,7 @@
                             <div class="box-footer clearfix" >
                                 <button type="submit" value="Cadastrar" id="idcad"
                                         class="btn btn-success btn-lg cadPub"
-                                        data-controller="post/add/"><i class="fa "></i>Autualizar &
+                                        data-controller="post/add/"><i class="fa "></i>Atualizar &
                                     Publicar
                                 </button>
                                 <button type="submit" value="Cadastrar" id="idcad2"

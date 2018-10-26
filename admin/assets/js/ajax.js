@@ -225,34 +225,60 @@ $(function () {
             },"json");
         }
     });
-/*testes*/
 
+
+/*funçaõ de mater ou não o titulo do post*/
     $(".title_post").blur(function(){
+        var post_title = $(this).val();
+        var ctr = $(this).attr('data-controller');
 
 
         $.ajax({
-            url: "http://localhost/Portal-News/admin/galImages/formGalTeste",
-            //data:dados,
+            url: BASE + ctr,
+            data:{post_title: post_title},
             type:"Post",
             dataType: 'json',
             success:function(data){
+
+                if (data.retorno) {
+                    $('.alerta').addClass(data.retorno[0]);
+                    $('.icones').addClass(data.retorno[1]);//icone tem que passar no indice 1
+                    $('.titulo').html(data.retorno[2]);//Titulo no indice 2
+                    $('.result').html(data.retorno[3]);//Mensagem de retorno no indice 3
+                }
+
                 if(data.postExist == true){
                     $(".title_exist").val(1);
                 }else{
                     $(".title_exist").val(0);
                 }
+
             }
 
         });
     });
         $(document).on('click', ".mudarTitlePost", function(){
-            $(".title_post").focus(alert("teste"));
+            $(".title_post").focus();
+            removeBox();
         });
 
         $(document).on('click', ".manterTitlePost", function(){
             $(".title_exist").val(0);
+            removeBox();
         });
+//essa função apenas retira a box de  mensagem apos  ser concluída a ação
+function removeBox(){
+    $.each(alerts, function (key, value) {
+        $('.alerta').removeClass(value);
+    });
 
+    $.each(icones, function (key, value) {
+        $('.icones').removeClass(value);
+    });
+
+    $('.titulo').html('');//Titulo no indice 2
+    $('.result').html('');//Mensagem de retorno no indice 3
+}
 
 });
 

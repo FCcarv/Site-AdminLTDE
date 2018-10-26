@@ -81,11 +81,21 @@ class GallRepository extends GalPost
     /*Atualiza as galerias de fotos ou albuns, enviando as imagens para cadastro no banco do dados*/
     public function upGalImage($FormGallery)
     {
-        $this->titleImg_exists($FormGallery);
+       // $this->titleImg_exists($FormGallery['title_galft']);
         $FormGallery['img_galft']   = (!empty($_FILES['img_galft']['name']) ? $_FILES['img_galft'] : NULL);
         $FormGallery['slug_galft'] = Check::Name($FormGallery['title_galft']);
 
-        $this->coverSendGalFt($FormGallery);//
+        //verifica se o usuario quer mater ou não o mesmo titulo
+        if($FormGallery['title_exist'] == '0') {
+            $this->coverSendGalFt($FormGallery);//
+        }else{
+            $this->dados['retorno'] = Alert::AjaxInfo("<b>Esse Titulo <ins>{$FormGallery['title_galft']}</ins> já existe.
+                <p>
+                <button class='btn btn-primary manterTitlePost'>Manter</button>
+                <button class='btn btn-warning mudarTitlePost'>Mudar</button>
+                </p>");
+            $this->return_ajax_error($this->dados);
+        }
         return true;
     }
 

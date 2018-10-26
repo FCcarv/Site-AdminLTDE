@@ -116,6 +116,23 @@ class postController extends Controller
             header("Location: " . BASEADMIN);
         }
     }
+/*trabalha junto com o ajax , confirmando se o titulo do post ja existe e verifica se o usuário mantem ou muda*/
+    public function postExist(){
+        $dados = [];
+        $post = new Post();
+        $postRp = new PostRepository();
+        $dados_Form = filter_input(INPUT_POST,'post_title',FILTER_DEFAULT);
+
+        if ($post->setpost($dados_Form) == true) {
+            $dados['postExist'] = true;
+            $dados['retorno'] = Alert::AjaxInfo("<b>Esse Titulo <ins>{$dados_Form}</ins> já existe.
+                <p>
+                <button class='btn btn-primary manterTitlePost'>Manter</button>
+                <button class='btn btn-warning mudarTitlePost'>Mudar</button>
+                </p>");
+            $postRp->return_ajax_error($dados);
+        }
+    }
     //Atualiza os post
     public function edit()    {
         $dados = [];

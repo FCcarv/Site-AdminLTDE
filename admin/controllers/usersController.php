@@ -47,8 +47,7 @@ class usersController extends Controller
         if ($u->existPermissao('users_view')) {
             $permite = new Permissao();
             $dados['grup_List'] = $permite->getGrupList();
-            //print_r($_SERVER['DOCUMENT_ROOT']);
-            //echo BASEADMIN.'assets/dist/img/ft-perfil';exit;
+
             $this->loadTemplate('login/users_Add', $dados);
         }else{
             header("Location: " . BASEADMIN);

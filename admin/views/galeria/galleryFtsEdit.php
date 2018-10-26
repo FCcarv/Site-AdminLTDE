@@ -39,8 +39,9 @@
                                                 <input type="hidden"  name="id_galft" value="<?=$id_fto_albuns?>">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control input-lg title_exist" name="title_exist" value="0">
                                                 <label for="InputEmail1">Titulo da Galeria</label>
-                                                <input type="text" class="form-control input-lg" name="title_galft" value="<?=$title_fto_albuns?>" id="InputEmail1" placeholder="Titulo Galeria">
+                                                <input type="text" class="form-control input-lg title_post" data-controller="galImages/postExist/" name="title_galft" value="<?=$title_fto_albuns?>" placeholder="Titulo Galeria">
                                             </div>
                                             <div class="form-group"><!--id input hidden-->
                                                 <input type="hidden" class="form-control input-lg status" name="status_galft"

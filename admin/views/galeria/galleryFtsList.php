@@ -44,7 +44,7 @@
                                     </a>
                                 </div>
                                 <div class="pull-right">
-                                   <h5 class="box-title alert-link"><i class="fa fa-check"><b><?=$statusGallery?></b></i></h5>
+                                    <a href="javascript:void(0)" class="product-title"><h5><i class="fa fa-check"></i><b><?=$statusGallery?></b></h5></a></h5>
                                 </div>
                             </div>
                         <?php

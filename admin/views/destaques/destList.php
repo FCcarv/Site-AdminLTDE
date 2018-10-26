@@ -97,6 +97,71 @@
 
 </section>
 <!-- Main content -->
+<section class="content">
+<div class="col-md-12">
+    <div class="box box-primary">
+        <div class="box-header with-border margin-bottom">
+            <h2 class="box-title">Área administrativa</h2>
+        </div>
+        <div class="col-md-offset-1 box-header with-border">
+            <h3 class="box-title"><i class="fa fa-list-ul"></i><strong>Listar Empresas</strong></h3>
+            <a href="#" class="mailbox-attachment-name col-md-offset-9">
+                <i class="glyphicon glyphicon-picture"></i> Cadastrar</a>
+        </div>
+        <div class="row margin">
+            <div class="col-md-offset-1 col-md-11">
+                <div class="row">
+                    <div class="col-md-5 crewell well-sm margin">
+                        <div class="attachment-block clearfix" >
+                            <div class="col-sm-5 col-md-4 margin">
+                                <img class="img-responsive" src="<?= BASEADMIN?>assets/img/photo2.png" alt="Photo"></span>
+                                <span class="pull-left product-description"><h5>Registro: 05/03/2010</h5></span>
+                            </div>
+                            <div class="col-md-offset-2 product-info">
+                                <a href="javascript:void(0)" class="product-title">Samsung TV</a>
+                                <span class=" pull-right">
+                                           <div class="btn-group">
+                                                <a href="<?= BASEADMIN?>home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                <a href="<?= BASEADMIN ?>post/editPost/" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="" class="btn btn-danger btn-xs del " data-controller="post/excluiPost/" id="" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                            </div>
+                                        </span></br>
+                                <span class="product-description"> Nome: Geraldo Pompilio dasilva</span></br>
+                                <span class="product-description">Email: john.doe@example.com</span></br>
+                                <span class="product-description">http://localhost/Portal-News/admin/empresa/</span></br>
+                                <span class="product-description">Phone: (555) 539-1011</span></br>
+                                <span class="product-description">Phone Cel: (555) 539-1037</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 crewell well-sm margin">
+                        <div class="attachment-block clearfix" >
+                            <div class="col-sm-5 col-md-4 margin">
+                                <img class="img-responsive" src="<?= BASEADMIN?>assets/img/photo2.png" alt="Photo"></span>
+                                <span class="pull-left product-description"><h5>Registro: 05/03/2010</h5></span>
+                            </div>
+                            <div class="col-md-offset-2 product-info">
+                                <a href="javascript:void(0)" class="product-title">Samsung TV</a>
+                                <span class=" pull-right">
+                                           <div class="btn-group">
+                                                <a href="<?= BASEADMIN?>home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                <a href="<?= BASEADMIN ?>post/editPost/" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="" class="btn btn-danger btn-xs del " data-controller="post/excluiPost/" id="" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                            </div>
+                                        </span></br>
+                                <span class="product-description"> Nome: Geraldo Pompilio dasilva</span></br>
+                                <span class="product-description">Email: john.doe@example.com</span></br>
+                                <span class="product-description">http://localhost/Portal-News/admin/empresa/</span></br>
+                                <span class="product-description">Phone: (555) 539-1011</span></br>
+                                <span class="product-description">Phone Cel: (555) 539-1037</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Fim col-md-9 -->
+    </section>
 
     <!-- ======================  /.content ========================= -->
 

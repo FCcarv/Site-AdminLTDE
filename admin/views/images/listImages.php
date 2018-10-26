@@ -52,13 +52,13 @@
                     } else {
 
                     echo "<div class=\"alert alert-info alert-dismissible\">
-                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
-                    <h4><i class=\"icon fa fa-info\"></i> Alert!</h4>
-                    <h3>Não há imagens cadastradas nessa galeria</h3><br>
-                    <a href=\"<?=BASEADMIN?>images/addFotosG/\">
-                        <i class=\"fa fa-link\"></i>Cadastre Imagens
-                    </a>
-                </div>";
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
+                            <h4><i class=\"icon fa fa-info\"></i> Alert!</h4>
+                            <h3>Não há imagens cadastradas nessa galeria</h3><br>
+                            <a href=\"<?=BASEADMIN?>images/addFotosG/\">
+                                <i class=\"fa fa-link\"></i>Cadastre Imagens
+                            </a>
+                        </div>";
                 }
                     ?>
                 </div>

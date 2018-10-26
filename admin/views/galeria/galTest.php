@@ -24,11 +24,14 @@
                 </div>
                 <div class="box-body">
                     <div class="row margin-bottom">
-                        <form class="form" action="" method="post" enctype="multipart/form-data" id="galImages/formGalTeste">
+                        <form class="form" action="" method="post" enctype="multipart/form-data" id="galImages/postExist">
                             <div class="col-sm-offset-2 box-body">
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <div class="col-sm-offset-1 col-sm-8">
+                                            <span id="test">Nice to meet you!</span>
+                                            <p>Click in the input field to get focus.</p>
+                                            <p class="help-block">Atenção os dados com * são obrigatório o preenchimento.</p>
                                             <div class="form-group"><!--ID-->
                                                <!-- <input type="hidden"  name="id_galft" value="">-->
                                             </div>
@@ -37,8 +40,8 @@
                                                 <input type="text" class="form-control input-lg" name="post_title" class="title_post" placeholder="titulo do post" >
                                             </div>
                                             <div class="form-group">
-
-                                                <input type="text" class="form-control input-lg" name="title_exist" class="title_exist" placeholder="title_exist"  value="0">
+                                                <label for="InputEmail1">Title exist</label>
+                                                <input type="text" class="form-control input-lg" name="title_exist" class="title_exist" placeholder="title_exist" value="0">
                                             </div>
                                             <div class="form-group"><!--id input hidden-->
                                              <!--   <input type="hidden" class="form-control input-lg status" name="status_galft"
@@ -49,9 +52,9 @@
                                                    <button  value="Cadastrar" id="idcad2" class="btn btn-primary btn-lg cad">
                                                     <i class="fa "></i>Atualizar
                                                 </button>
-                                                <a href="" class="btn btn-primary btn-lg pull-right">
+                                            <!--    <a href="" class="btn btn-primary btn-lg pull-right">
                                                     <span class="glyphicon glyphicon-share-alt"></span>&ensp;Voltar
-                                                </a>
+                                                </a>-->
                                             </div>
                                         </div>
                                     </div> <!-- /.FIM col-md-12 -->

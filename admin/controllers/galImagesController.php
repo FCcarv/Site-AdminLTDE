@@ -30,7 +30,7 @@ class galImagesController extends Controller
         }
     }
 
-/*Puxa a view e de cadastro das galerias*/
+    /*Puxa a view e de cadastro das galerias*de fotos*/
     public function galFtadd()
     {
         $dados = [];
@@ -79,7 +79,26 @@ class galImagesController extends Controller
         }
     }//
 
-/*atualiza as galerias de fotos e a parte de status das mesmas*/
+    public function postExist()
+    {
+        $dados = [];
+        $gal = new GalPost();
+        $galRp = new GallRepository();
+
+        $dados_Form = filter_input(INPUT_POST, 'post_title', FILTER_DEFAULT);
+
+        if ($gal->setTitleGal($dados_Form) == true) {
+            $dados['postExist'] = true;
+            $dados['retorno'] = Alert::AjaxInfo("<b>Esse Titulo <ins>{$dados_Form}</ins> já existe.
+                <p>
+                <button class='btn btn-primary manterTitlePost'>Manter</button>
+                <button class='btn btn-warning mudarTitlePost'>Mudar</button>
+                </p>");
+         $galRp->return_ajax_error($dados);
+        }
+    }
+
+    /*atualiza as galerias de fotos e a parte de status das mesmas*/
     public function editgal()
     {
         $dados = [];
@@ -139,6 +158,7 @@ class galImagesController extends Controller
         }
         $galRp->return_ajax_error($dados);
     }
+
     /*####################### teste ###########################*/
 
     public function addGalftTeste()
@@ -149,29 +169,27 @@ class galImagesController extends Controller
         $u->setLogUser();
         if ($u->existPermissao('galleryFts_view')) {
 
-          // $dados['getDadosGal'] = $gal->getIDGal();
+            // $dados['getDadosGal'] = $gal->getIDGal();
 
-            $this->loadTemplate('galeria/galTest', $dados);
+            $this->loadTemplate('galeria/gTest', $dados);
         } else {
             header("Location: " . BASEADMIN);
         }
     }//
 
-    public function formGalTeste()
+    public function GalTeste()
     {
         $dados = [];
         $u = new Users();
-        $gal = new GalPost();
-        $galRp = new GallRepository();
+        //$gal = new GalPost();
         $u->setLogUser();
+        if ($u->existPermissao('galleryFts_view')) {
 
-        $rowCout= 0;
-        if($rowCout > 0){
-            $dados['postExist']= true;
-        }else{
-            $dados['postExist']= false;
+            // $dados['getDadosGal'] = $gal->getIDGal();
+
+            $this->loadTemplate('galeria/galList', $dados);
+        } else {
+            header("Location: " . BASEADMIN);
         }
-
-        $galRp->return_ajax_error($dados);
     }//
 }
