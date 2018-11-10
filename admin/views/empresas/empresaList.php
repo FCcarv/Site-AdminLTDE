@@ -1,14 +1,16 @@
+<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Banner
+        <i class="fa fa-building-o"></i>&nbsp; Banner Empresas
         <small> & Company</small>
     </h1>
     <ol class="breadcrumb">
-        <li class="active">LISTA DE EMPRESAS CADASTRADAS</li>
+        <li class="active">LISTA DE EMPRESAS</li>
         <li><a href="<?=BASEADMIN?>/home/"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="<?=BASEADMIN?>empresa/empCad/"><i class="fa fa-sign-out"></i>Cadastrar Empresas</a></li>
     </ol>
 </section>
+<!-- Main content -->
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -18,12 +20,8 @@
                     <h2 class="box-title">Área administrativa</h2>
                 </div>
                 <div class="col-md-offset-1 box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-list-ul"></i><strong>Empresas</strong></h3>
-                    <a href="<?= BASEADMIN?>empresa/EmpCad" class="mailbox-attachment-name col-md-offset-8">
-                        <i class="fa fa-link"></i> Cadastrar Empresas
-                    </a>
+                    <h2><i class="fa fa-list-ul"></i>&nbsp;<strong>Empresas</strong></h2>
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body">
                     <div class="col-md-offset-1 col-md-11">
                         <div class="row">
@@ -100,33 +98,4 @@
             <!-- /.box -->
         </div><!-- /.col-md-12 -->
     </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="row margin">
-                <div class="col-md-offset-1 col-md-11">
-                    <div class="row">
-
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- Fim col-md-9 -->
 </section>

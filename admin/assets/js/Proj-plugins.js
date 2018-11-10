@@ -66,6 +66,40 @@ $(function () {
         },
     });
 
+
+    tinymce.init({
+        /* replace textarea having class .tinymce with tinymce editor */
+        selector: "textarea.myTextBasic",
+        language:'pt_BR',   height: 350,
+        theme: "modern",
+        skin: "lightgray",
+        menubar: false,
+
+        /* plugin */
+        plugins: [
+            "advlist autolink link image charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor media lists"
+        ],
+
+        toolbar: "styleselect | forecolor | backcolor | pastetext | removeformat |  bold | italic | underline | strikethrough | bullist | numlist | alignleft | aligncenter | alignright |  link | unlink | outdent | indent | forecolor | fullscreen | preview | code",
+
+        style_formats: [
+            {title: 'Normal', block: 'p'},
+            {title: 'Titulo 3', block: 'h3'},
+            {title: 'Titulo 4', block: 'h4'},
+            {title: 'Titulo 5', block: 'h5'},
+        ],
+        convert_urls: false,
+        automatic_uploads : false,
+        document_base_url: 'http://localhost/Portal-News/admin/',
+        link_title: false,
+        target_list: false,
+        theme_advanced_blockformats: "h1,h2,h3,h4,h5,p,pre",
+        images_upload_url: 'post/sendImgTinymce',
+        image_caption: true,
+        statusbar: false
+    });
     //############## MASK INPUT
     $(".formDate").mask("99/99/9999");
     $(".formTime").mask("99/99/9999 99:99");

@@ -33,6 +33,8 @@ class Users extends Model
             return false;
         }
     }
+
+
 /*busca informaçoes do usuario e manda parsa a template view
 *É usado na atualizaçõa dss informações do usuario ao editar o seu proprio  perfil
 */
@@ -51,9 +53,7 @@ class Users extends Model
            }
     }
 
-/*
- * BUSCAR INFORMAÇÕES DO USUARIO LOGADO NO SISTEMA NO BANCO DE DADOS E RETORNA SEU ID.
- * */
+/*BUSCAR INFORMAÇÕES DO USUARIO LOGADO NO SISTEMA NO BANCO DE DADOS E RETORNA SEU ID.*/
     public function getInfo($id) {
         $array = array();
 
@@ -68,8 +68,8 @@ class Users extends Model
         //sprint_r($array);exit;
       return $array;
     }
-/*LISTA  OS USUÁRIOS DO SISTEMA E OS SEUS GRUPOS DE PERMISSAO ASSOSSIADOS COM O MESMO.
-*/
+
+/*LISTA  OS USUÁRIOS DO SISTEMA E OS SEUS GRUPOS DE PERMISSAO ASSOSSIADOS COM O MESMO.*/
     public function getListUsers($id){
 
     $array = array();
@@ -113,8 +113,7 @@ class Users extends Model
         }
     }
 
-    /*CHECA O EMAIL E RETORNA TRUE OU FALSE
-    */
+    /*CHECA O EMAIL E RETORNA TRUE OU FALSE*/
     public function checkByEmail($email) {
         $sql = $this->db->prepare("SELECT * FROM " . $this->Table ." WHERE email_user = :email LIMIT 1");
         $sql->bindValue(":email",$email,PDO::PARAM_STR);
@@ -123,7 +122,6 @@ class Users extends Model
             if ($sql->rowCount() > 0) {
                 $this->Result = $sql->fetch();
                 return true;
-
             }
         } catch (PDOException $e) {
             die($e->getMessage());
@@ -131,8 +129,7 @@ class Users extends Model
 
     }
 
-    /*TEM A RESPONSABILIDADE DE CADASTRAR USUARIOS , COM PERMISSAO MAXIMA DE USUARIO ADMIN
-    */
+    /*TEM A RESPONSABILIDADE DE CADASTRAR USUARIOS , COM PERMISSAO MAXIMA DE USUARIO ADMIN*/
     public function add($nome_us,$sobrenome_us,$email_us,$pass_us,$grup_us) {
         $mail_Id = $this->checkByEmail($email_us);
         if ($mail_Id == 0){
@@ -151,26 +148,26 @@ class Users extends Model
         }
 
     }
-    /*FAZ UMA BUSCA A USUARIOS QUE NÃO ESTA LOGODA , É USADO NO METODO INSERTUSER DO USERSCONTROLLE
-    */
+    /*FAZ UMA BUSCA A USUARIOS QUE NÃO ESTA LOGODA , É USADO NO METODO INSERTUSER DO USERSCONTROLLE*/
     public function getUserInfo($id_us)
     {
-        $array = array();
-
         $sql = $this->db->prepare("SELECT * FROM users WHERE id_user = :id");
         $sql->bindValue(":id", $id_us);
         $sql->execute();
-
-           if ($sql->rowCount() > 0) {
-            $array = $sql->fetch(PDO::FETCH_ASSOC);
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0){
+                return $sql->fetch(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
 
-      return $array;
     }
 
-/*Atualiza somentes os dados do usuatio , mas tem que estar logasdo como admim
- *
- * */
+/*Atualiza somentes os dados do usuatio , mas tem que estar logasdo como admim*/
     public function update(array $dados_form, $id_us )
     {
         $sql = $this->db->prepare("UPDATE users SET nome_user = :nome_us, sobrenome_user = :sobrenome_us, id_grup_permissao = :id_grup 
@@ -193,9 +190,8 @@ class Users extends Model
             $sql = $this->db->prepare("UPDATE users SET pass_user = :pass_us WHERE id_user = :id_us");
             $sql->bindValue(":pass_us",password_hash($dados_form['pass_us'],PASSWORD_BCRYPT),PDO::PARAM_STR);
             $sql->bindValue(":id_us", $id_us);
-            $sql->execute();
-
             try {
+                $sql->execute();
                 if ($sql->rowCount() > 0){
 
                     return true;
@@ -220,9 +216,8 @@ class Users extends Model
         $sql->bindValue(":sobrenome_us", $sobrenome_us);
         $sql->bindValue(":id_grup", $grup_us);
         $sql->bindValue(":id_us", $id_us);
-        $sql->execute();
-
         try {
+            $sql->execute();
             if ($sql->rowCount() > 0) {
 
                 return true;
@@ -239,11 +234,9 @@ class Users extends Model
         $sql = $this->db->prepare("UPDATE users SET pass_user = :pass_us WHERE id_user = :id_us");
         $sql->bindValue(":pass_us", password_hash($pass_us, PASSWORD_BCRYPT), PDO::PARAM_STR);
         $sql->bindValue(":id_us", $id_us);
-        $sql->execute();
-
         try {
+            $sql->execute();
             if ($sql->rowCount() > 0) {
-
                 return true;
             }else{
                 return false;
@@ -254,17 +247,16 @@ class Users extends Model
     }
 
 
-    public function delFtoAntiga($ftos_us,$id_us)
+    public function upUserFto($ft, $id)
     {
-        $sql = $this->db->prepare("UPDATE users SET foto_user =:fto_us WHERE id_user = :id_us");
-        $sql->bindValue(":fto_us", $ftos_us['tmp_name'][0]);
-        $sql->bindValue(":id_us", $id_us);
-        $sql->execute();
+        $sql = $this->db->prepare("UPDATE users SET foto_user = :ftos_us WHERE id_user =:id_us");
+        $sql->bindValue(":ftos_us", $ft);
+        $sql->bindValue(":id_us", $id);
         try {
+            $sql->execute();
             if ($sql->rowCount() > 0) {
-
                 return true;
-            } else {
+            }else{
                 return false;
             }
         } catch (PDOException $e) {
@@ -272,82 +264,21 @@ class Users extends Model
         }
     }
 
-
-    public function insertFto($ftos_us, $id_us)
-    {
-
-        for ($q = 0; $q < count($ftos_us['tmp_name']); $q++) {
-            $tipo = $ftos_us['type'][$q];
-            if (in_array($tipo, array('image/jpeg', 'image/png'))) {
-                $tmpname = md5(time() . rand(0, 9999)) . '.jpg';
-                move_uploaded_file($ftos_us['tmp_name'][$q], 'assets/dist/img/ft-perfil/' . $tmpname);
-
-                list($width_orig, $height_orig) = getimagesize('assets/dist/img/ft-perfil/' . $tmpname);
-                $ratio = $width_orig / $height_orig;
-
-                $width = 300;
-                $height = 300;
-
-                if ($width / $height > $ratio) {
-                    $width = $height * $ratio;
-                } else {
-                    $height = $width / $ratio;
-                }
-
-                $img = imagecreatetruecolor($width, $height);
-                if ($tipo == 'image/jpeg') {
-                    $origi = imagecreatefromjpeg('assets/dist/img/ft-perfil/' . $tmpname);
-                } elseif ($tipo == 'image/png') {
-                    $origi = imagecreatefrompng('assets/dist/img/ft-perfil/' . $tmpname);
-                }
-
-                imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-
-                imagejpeg($img, 'assets/dist/img/ft-perfil/' . $tmpname, 80);
-
-                $sql = $this->db->prepare("UPDATE users SET foto_user = :ftos_us WHERE id_user =:id_us");
-                $sql->bindValue(":ftos_us", $tmpname);
-                $sql->bindValue(":id_us", $id_us);
-                $sql->execute();
-                try {
-                    if ($sql->rowCount() > 0) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } catch (PDOException $e) {
-                    die($e->getMessage());
-                }
-            }
-        }
-    }
-
-    /*ATUALIZA A FOTO DE PERFIL E APAGA A ANTIGA DA PASTA*/
-    public function updateFto(array $ftos_us, $iduser){
-
-        $sql = $this->db->prepare("SELECT foto_user FROM users WHERE id_user = :iduser");
-        $sql->bindValue(":iduser", $iduser);
-        $sql->execute();
-
-        if ($sql->rowCount() == 0) {
-            $this->insertFto($ftos_us, $iduser);
-        }else{
-            $sql = $sql->fetch();
-            //aPAGA  A FOTO DA PASTA
-            unlink('assets/dist/img/ft-perfil/'. $sql['foto_user']);
-            $this->delFtoAntiga($ftos_us, $iduser);
-            $this->insertFto($ftos_us, $iduser);
-        }
-        return true;
-    }
-
-
     /*EXCLUI USUARIOS DO SISTEMA ,MASSOMENTE LOGADO COMO ADMIN EM NIVEL MAXIMO
      */
- public function delete($id_us) {
+    public function delete($id_us) {
         $sql = $this->db->prepare("DELETE FROM users WHERE id_user = :id");
         $sql->bindValue(":id", $id_us);
-        $sql->execute();
+         try {
+             $sql->execute();
+             if ($sql->rowCount() == 1) {
+                 return $sql->fetch(PDO::FETCH_ASSOC);
+             } else {
+                 return false;
+             }
+         } catch (PDOException $e) {
+             die($e->getMessage());
+         }
     }
 
     /*TEM  A RESPOMSABILIDADE DE LOGAR E DIRECIONAR O USUARIO A ENTRAR NO SISTEMA
@@ -416,10 +347,7 @@ class Users extends Model
             die($e->getMessage());
         }
     }
-    public function getGrup() {
 
-
-    }
     /*PEGA O USUARIO LOGADO PELO ID['id_grup_permissao']
      * */
     public function getId() {
@@ -453,10 +381,6 @@ class Users extends Model
             die($e->getMessage());
         }
     }
-
-
-
-
 
     public function listUser_Grup()
     {

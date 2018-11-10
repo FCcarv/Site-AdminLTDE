@@ -91,6 +91,39 @@
             </div>
         </div>
     </div>
+   <!-- Box color-->
+    <div class="col-md-offset-2 col-md-9">
+        <div class="box box-default box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title"><strong>Titulo de Categoria</strong></h3>
+                <div class="btn-group pull-right">
+                    <a href="http://localhost/Portal-News/admin/home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                    <a href="http://localhost/Portal-News/admin/post/editPost/" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="" class="btn btn-danger btn-xs del " data-controller="post/excluiPost/" id="" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <p>
+                    Specifies that the element should automatically get focus when the page loads
+                    Specifies that the element should automatically get focus when the page loads
+                    Specifies that the element should automatically get focus when the page loads
+                </p>
+                <ul class="nav nav-stacked">
+                    <li>
+
+                        <span class="pull-left product-description margin-bottom">Autor:cicrano de almeida </span><br>
+                        <span class="pull-right product-description" style="margin-top: 25px"><i>Fonte:folha teste</i></span>
+
+                        <span class="pull-left" style="margin: 5px 0 0 -145px;"><h5>05/03/2010</h5></span>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- /.box-body -->
+        </div><!-- /.box SUCCESS -->
+    </div>
+    <!-- FIM Box color-->
 
     <div class="col-md-9">
         <!-- Default box -->
@@ -2516,6 +2549,30 @@
                             <!-- /.row -->
                         </div>
                         <!-- /.col -->
+
+                        <div class="col-md-5 crewell well-sm margin">
+                            <div class="attachment-block clearfix">
+                                <div class="col-sm-5 col-md-4 margin">
+                                    <img class="img-responsive" src="http://localhost/Portal-News/admin/assets/img/photo2.png" alt="Photo">
+                                    <span class="pull-left product-description"><h5>Registro: 05/03/2010</h5></span>
+                                </div>
+                                <div class="col-md-offset-2 product-info">
+                                    <a href="javascript:void(0)" class="product-title">Samsung TV</a>
+                                    <span class=" pull-right">
+                                           <div class="btn-group">
+                                                <a href="http://localhost/Portal-News/admin/home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                <a href="http://localhost/Portal-News/admin/post/editPost/" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="" class="btn btn-danger btn-xs del " data-controller="post/excluiPost/" id="" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                            </div>
+                                        </span><br>
+                                    <span class="product-description"> Nome: Geraldo Pompilio dasilva</span><br>
+                                    <span class="product-description">Email: john.doe@example.com</span><br>
+                                    <span class="product-description">http://localhost/Portal-News/admin/empresa/</span><br>
+                                    <span class="product-description">Phone: (555) 539-1011</span><br>
+                                    <span class="product-description">Phone Cel: (555) 539-1037</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.row -AKI-->
 

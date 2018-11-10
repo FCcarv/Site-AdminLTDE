@@ -100,10 +100,16 @@ class Post extends Model
 
 
     /*Seleciona os posts*/
-    public function Posts($offset, $limit)
+    public function Posts($nome_user, $idGpPerm, $offset, $limit)
     {
-        $sql = $this->db->prepare("SELECT * FROM posts ORDER BY status_post ASC, date_post DESC LIMIT $limit OFFSET $offset");
+      if ($idGpPerm == 1){
+          $sql = $this->db->prepare("SELECT * FROM posts ORDER BY status_post ASC, date_post DESC LIMIT $limit OFFSET $offset");
 
+      }else{
+          $sql = $this->db->prepare("SELECT * FROM posts WHERE permissao_post = :id_permissao AND autor_post = :nameUser ORDER BY status_post ASC, date_post DESC LIMIT $limit OFFSET $offset");
+          $sql->bindValue(":id_permissao", $idGpPerm);
+          $sql->bindValue(":nameUser", $nome_user);
+      }
         try {
             $sql->execute();
             if ($sql->rowCount() > 0)
@@ -112,6 +118,7 @@ class Post extends Model
             die($e->getMessage());
         }//
     }
+
 
     /*mostra as imagens da galeria existe naquele post*/
     public function ImgGallery($id_post)

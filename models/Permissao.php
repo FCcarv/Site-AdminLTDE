@@ -53,6 +53,7 @@ class Permissao extends Model
     public function existPermissao($name)
     {
         if(in_array($name, $this->permissions)) {
+
             return true;
         } else {
             return false;
@@ -115,7 +116,14 @@ class Permissao extends Model
     {
         $sql = $this->db->prepare("INSERT INTO param_permissao (nome_param_permissao) VALUES (:perm_name)");
         $sql->bindValue(":perm_name", $perm_name);
-        $sql->execute();
+        try {
+            $sql->execute();
+            if ($sql->rowCount() == 1){
+                return true;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
 
     }
 

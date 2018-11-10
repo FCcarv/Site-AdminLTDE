@@ -24,9 +24,13 @@ class usersController extends Controller
        $dados = [];
 
         $u = new Users();
-        $u->setLogUser();
-        $data['id_user'] = $u->getId();
 
+        $u->setLogUser();
+
+        $dados['user_add_permission'] = $u->existPermissao('users_add');
+        $dados['user_edit_permission'] = $u->existPermissao('users_edit');
+        $dados['user_view_permission'] = $u->existPermissao('users_view');
+        $dados['user_del_permission'] = $u->existPermissao('users_delet');
         if ($u->existPermissao('users_view')) {
             $dados['users_list'] = $u->getListUsers($u->getId());
 
@@ -44,7 +48,7 @@ class usersController extends Controller
         $u->setLogUser();
         $dados['id_user'] = $u->getId();
 
-        if ($u->existPermissao('users_view')) {
+        if ($u->existPermissao('users_add')) {
             $permite = new Permissao();
             $dados['grup_List'] = $permite->getGrupList();
 
@@ -155,33 +159,26 @@ class usersController extends Controller
     {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
         $u->setLogUser();
 
-        if ($u->existPermissao('users_edit')) {
             $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
 
-            if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
-                $id_us = $dadosPerm['id_us'];
-                if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
-                    $ftos_us = $_FILES['ftos_us'];
+            $dadosPerm['ftos_us'] = (!empty($_FILES['ftos_us']["name"]) ? $_FILES['ftos_us'] : NULL);
+           // var_dump($dadosPerm);die;
+            $ftUpdate = $us->updateFto($dadosPerm);
+            if ($ftUpdate !== true) {
 
-                } else {
-                    $ftos_us = array();
-                }
-                $ft = $u->updateFto($ftos_us, $id_us);
-                if ($ft == true) {
-                    $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!</b>");
-                    $dados['redirect'] = Alert::AjaxRedirect("users");
-                } else {
-                    $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
-                    $dados['redirect'] = Alert::AjaxRedirect("users");
-                }
+                $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("users/editUs/{$dadosPerm['id_us']}");
+
+            } else {
+
+                $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("users/editUs/{$dadosPerm['id_us']}");
             }
-        }else{
-            $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."users");
-        }
-        echo json_encode($dados);
-        exit;
+
+        $us->return_ajax_error($dados);
     }
     /*Deleta usuarios */
     public function delete($id_us) {
@@ -191,7 +188,7 @@ class usersController extends Controller
         $u->setLogUser();
         $dados['id_user'] = $u->getId();
 
-        if ($u->existPermissao('users_view')) {
+        if ($u->existPermissao('users_delet')) {
             $permite = new Permissao();
             $dados['user_info'] = $u->getUserInfo($id_us);//retorna informações do usuario
             $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
@@ -246,38 +243,42 @@ class usersController extends Controller
     }
 
 /*Edita as fotos na area de perfil do usuario, fora do painel*/
-    public function editFotosPerfil()
+/*    public function editFotosPerfil()
     {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
         $u->setLogUser();
 
         if ($u->existPermissao('users_perfil')) {
             $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
 
-            if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
-                $id_us = $dadosPerm['id_us'];
-                if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
-                    $ftos_us = $_FILES['ftos_us'];
+                if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
+                    $id_us = $dadosPerm['id_us'];
+                    if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
+                        $ftos_us = $_FILES['ftos_us'];
 
-                } else {
-                    $ftos_us = array();
+                    } else {
+                        $ftos_us = array();
+                    }
+                    $ft = $us->updateFto($ftos_us, $id_us);
+                    die;
+
+                    /*      if ($ft == true) {
+                              $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!!</b>");
+                              $dados['redirect'] = Alert::AjaxRedirect("users");
+                          } else {
+                              $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
+                              $dados['redirect'] = Alert::AjaxRedirect("users");
+                          }
                 }
-                $ft = $u->updateFto($ftos_us, $id_us);
-                if ($ft == true) {
-                    $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!!</b>");
-                    $dados['redirect'] = Alert::AjaxRedirect("users");
-                } else {
-                    $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
-                    $dados['redirect'] = Alert::AjaxRedirect("users");
-                }
+            } else {
+                $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN . "users");
             }
-        }else{
-            $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."users");
-        }
-        echo json_encode($dados);
-        exit;
-    }
+            echo json_encode($dados);
+            exit;
+        }*/
+
 /*Chama a view de usuario da area de perfil fora do painel*/
     public function FtosPerfil($id_us)
     {

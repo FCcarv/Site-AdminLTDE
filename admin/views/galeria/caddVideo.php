@@ -1,74 +1,69 @@
+<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-globe"></i> Área Administrativa
-        <small> Videos & Galerias</small>
+        <i class="fa  fa-youtube-play"></i>&nbsp;Galeria de Vídeos
+        <small>& All Videos</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="<?= BASEADMIN ?>home/"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li><a href="<?= BASEADMIN ?>gallery/">Listar</a></li>
+        <li class="active">CADASTRAR VÍDEOS</li>
+        <li><a href="<?=BASEADMIN?>/home/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?= BASEADMIN ?>gallery/"><i class="fa fa-file-video-o"></i>Listar</a></li>
     </ol>
 </section>
+<!-- Main content -->
 <section class="content">
-    <div class="row"><!-- /.############### col3 -->
-        <!-- /.col 12 -->
+    <div class="row">
         <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <div class="user-block">
-                        <h2>
-                            <i class="fa fa-file-video-o"></i> Cadastrar
-                            <small> & Videos</small>
-                        </h2>
-                        <span class="description"><b>Pode ser inseridos Vídeos de conteúdos relacionados ao <strong><i class="fa fa-youtube margin-r-5"></i>You tube  &  <i class="fa fa-vimeo-square margin-r-5">  </i>Vimeo</strong></b></span>
-                    </div>
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border margin-bottom">
+                    <h2 class="box-title">Área administrativa</h2>
+                </div>
+                <div class="col-md-offset-2 box-header with-border">
+                    <h2><i class="fa fa-list-ul"></i>&nbsp;<strong>Cadastrar</strong></h2>
+
                 </div>
                 <div class="box-body">
-                    <div class="row margin-bottom">
-                        <form class="form" action="" method="post" enctype="multipart/form-data" id="gallery/addVid">
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10 margin-bottom">
-                                                <strong>Videos</strong>
-                                                <p class="text-muted">
-                                                    Para cadastrar o video basta preencher o campo.
-                                                </p>
+                    <div class="col-md-offset-1 col-md-11">
+                        <div class="row">
+                            <form class="form" action="" method="post" enctype="multipart/form-data" id="gallery/addVid">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <div class="col-sm-offset-2 col-sm-10 pull-right margin-bottom">
+                                                <label>URL:</label>
+                                                <input type="text" class="form-control input-lg" name="gal_url" id="inputName" placeholder="Copie e Cole a URL do Vídeo" required/>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-offset-2 col-sm-10 pull-right margin-bottom">
-                                           <label>URL:</label>
-                                           <input type="text" class="form-control input-lg" name="gal_url" id="inputName" placeholder="Copie e Cole a URL do Vídeo" required/>
-                                       </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <input type="hidden" class="form-control input-lg" name="gal_status">
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <input type="hidden" class="form-control input-lg" name="gal_status">
+                                                </div>
+                                            </div
+                                            <div class="box-footer clearfix">
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="submit" class="btn btn-primary" value="cadastraVideo"><i class="fa fa-video-camera"></i>&nbsp;Cadastrar Video</button>
+                                                    </div>
+                                                </div>
+                                                <a href="<?=BASEADMIN?>gallery/" class="btn btn-primary pull-right">
+                                                    <span class="fa fa-mail-reply-all"></span>&ensp;Voltar
+                                                </a>
                                             </div>
-                                        </div
-                                       <div class="box-footer clearfix">
-                                           <div class="form-group">
-                                               <div class="col-sm-offset-2 col-sm-10">
-                                                   <button type="submit" class="btn btn-primary" value="cadastraVideo">Cadastrar Video</button>
-                                               </div>
-                                           </div>
-                                           <a href="<?=BASEADMIN?>gallery/" class="btn btn-primary pull-right">
-                                               <span class="glyphicon glyphicon-share-alt"></span>&ensp;Voltar
-                                           </a>
-                                       </div>
-                                   </div> <!-- /.FIM col-md-12 -->
+                                        </div> <!-- /.FIM col-md-12 -->
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <hr>
-                    <canvas>fim</canvas><!--ESSA TAG FAZ COM QUE O CONTENT TENHA UMA MARGIN BOTTON-->
+                            </form>
+                        </div>
                     </div>
-                    <!-- /.row -->
-                 </div>
-                <!-- /.post -->
+                    <div class="box-footer">
+                        Pode ser inseridos Vídeos de conteúdos relacionados ao <strong>
+                            <i class="fa fa-youtube margin-r-5"></i>You tube  &  <i class="fa fa-vimeo-square margin-r-5"></i>Vimeo</strong>.
+                   </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box-body -->
             </div>
-        </div>
-    </div><!-- /row.############### fim col3 -->
+            <!-- /.box -->
+        </div><!-- /.col-md-12 -->
+    </div>
 </section>
-
-
-

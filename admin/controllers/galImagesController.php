@@ -60,8 +60,7 @@ class galImagesController extends Controller
             $dados['redirect'] = Alert::AjaxRedirect("galImages");
         }
         $galRp->return_ajax_error($dados);
-        exit();
-    }
+      }
 
     /*Edita as galerias de imagens, enviando os dados e puxando  a view praa o controle*/
     public function galFtEdit($id_gal)

@@ -26,7 +26,7 @@ class galleryController extends Controller
         $u->setLogUser();
         if ($u->existPermissao('gallery_view')) {
 
-            $limit = 3; //qtidade de itens por pagina
+            $limit = 6; //qtidade de itens por pagina
           $totalPgs = $gal->totalVideos();//total de paginas
 
            $dados['pgs']= ceil($totalPgs/$limit);//paginas

@@ -27,12 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categorias` (
-  `id_categoria` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `parent_categoria` int(11) DEFAULT NULL,
   `title_categoria` varchar(255) DEFAULT NULL,
   `content_categoria` text,
   `date_categoria` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `slug_categoria` varchar(255) DEFAULT NULL
+  `slug_categoria` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -56,11 +57,12 @@ INSERT INTO `categorias` (`id_categoria`, `parent_categoria`, `title_categoria`,
 --
 
 CREATE TABLE `clientes_empresas` (
-  `id_cliente_empresa` int(11) NOT NULL,
+  `id_cliente_empresa` int(11) NOT NULL AUTO_INCREMENT,
   `nome_cliente_empresa` varchar(45) DEFAULT NULL,
   `logo_cliente_empresal` varchar(150) DEFAULT NULL,
   `link_cliente_empresa` varchar(150) DEFAULT NULL,
-  `data_registro_cliente_empresa` date DEFAULT NULL
+  `data_registro_cliente_empresa` date DEFAULT NULL,
+  PRIMARY KEY (`id_cliente_empresa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -70,14 +72,15 @@ CREATE TABLE `clientes_empresas` (
 --
 
 CREATE TABLE `destaques_noticias` (
-  `id_destaque_noticia` int(11) NOT NULL,
+  `id_destaque_noticia` int(11) NOT NULL AUTO_INCREMENT,
   `titulo_destaque_noticia` varchar(45) NOT NULL,
   `desc_destaque_noticia` longtext NOT NULL,
   `autor_destaque_noticia` varchar(45) NOT NULL,
   `fonte_destaque_noticia` varchar(45) NOT NULL,
   `data_destaque_noticia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `capa_destaques_noticia` varchar(150) NOT NULL,
-  `fotos_destaque_noticias_id` int(11) NOT NULL
+  `fotos_destaque_noticias_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_destaque_noticia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -87,8 +90,9 @@ CREATE TABLE `destaques_noticias` (
 --
 
 CREATE TABLE `ficheiro_jornal` (
-  `id_ficheiro_jornal` int(11) NOT NULL,
-  `titulo_ficheiro_jornal` varchar(45) NOT NULL
+  `id_ficheiro_jornal` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo_ficheiro_jornal` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_ficheiro_jornal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -98,9 +102,10 @@ CREATE TABLE `ficheiro_jornal` (
 --
 
 CREATE TABLE `fotos` (
-  `id_foto` int(11) NOT NULL,
+  `id_foto` int(11) NOT NULL AUTO_INCREMENT,
   `titulo_foto` varchar(45) NOT NULL,
-  `fotos_albuns_id` int(11) NOT NULL
+  `fotos_albuns_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_foto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -168,10 +173,11 @@ INSERT INTO `grup_permissao` (`id_grup_permissao`, `nome_grup_permissao`, `param
 -- Estrutura da tabela `jornal`
 --
 
-CREATE TABLE `jornal` (
+CREATE TABLE `jornalRegional` (
   `id_jornal` int(11) NOT NULL,
   `titulo_jornal` varchar(45) NOT NULL,
-  `ficheiro_jornal_id` int(11) NOT NULL
+  `link_jornal` varchar(45) NOT NULL,
+  `dataReg_jornal` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

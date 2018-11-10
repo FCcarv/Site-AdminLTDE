@@ -15,7 +15,9 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/AdminLTE.min.css">
         <!-- iCheck -->
+        <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/skins/_all-skins.min.css">
         <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/blue.css">
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,7 +32,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="<?= BASEADMIN ?>"><b>Admin</b>LTE</a>
+                <a href="<?= BASEADMIN ?>"><b>Portal</b>News</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -51,14 +53,11 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
+                        <div class="col-md-offset-1 col-xs-7">
                             <div class="checkbox icheck">
-                                <label>
-                                    <input type="checkbox" name="remenber"value="1" <?php if(isset($remenber))echo 'checked="checked"'?>/>Lembrar-me
-                                </label>
+                                <input type="checkbox" name="remenber"value="1" <?php if(isset($remenber))echo 'checked="checked"'?>/>Lembrar-me
                             </div>
                         </div>
-
                         <!-- /.col -->
                         <div class="col-xs-4">
                             <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa"></i>Logar</button>
@@ -66,17 +65,8 @@
                         <!-- /.col -->
                     </div>
                 </form>
-               <!-- /  <div class="social-auth-links text-center">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-                        Facebook</a>
-                    <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-                        Google+</a>
-                </div>
-               .social-auth-links -->
                 <a href="<?= BASEADMIN ?>login/key">&larrhk;Esqueci minha senha</a><br>
                 <a href="<?= BASEADMIN ?>login/cadastra" class="text-center">Cadastrar-se </a>
-
             </div>
             <!-- /.login-box-body -->
         </div>
@@ -84,20 +74,13 @@
 
         <!-- jQuery 3 -->
         <script src="<?= BASEADMIN ?>assets/js/jquery.min.js"></script>
+
         <!-- Bootstrap 3.3.7 -->
         <script src="<?= BASEADMIN ?>assets/js/bootstrap.min.js"></script>
-        <!-- iCheck -->
+        <script src="<?= BASEADMIN ?>assets/js/Proj-plugins.js"></script>
+
         <script src="<?= BASEADMIN ?>assets/js/plugins/icheck.min.js"></script>
         <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
-        </script>
-         <script>
             var BASE = '<?= BASEADMIN ?>'; 
         </script>
         <script src="<?= BASEADMIN ?>assets/js/ajax.js"></script>

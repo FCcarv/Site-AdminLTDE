@@ -16,24 +16,33 @@ class GallRepository extends GalPost
     */
     public function setVideotube($urlVideo)
     {
-        $url = strip_tags(trim($urlVideo));
-        if (substr_count($url, 'youtube') == 1) {
-            $idVideo = substr(strstr($url,"v="),+2);//pega depois da letra v=
-            $idVid = ((strlen($idVideo) > 11) ? substr($idVideo, 0, 11) : $idVideo);//verifica se existe caracteres a mais e corta a url deixando somente 11 caracteres.
-            $thumb = 'http://i1.ytimg.com/vi/' . $idVid . '/default.jpg';
-            $resUrl = strstr($url ,"v=",true);//pega antes da v=
-            $fullUrl = $resUrl.'v='.$idVideo;//aki junta tudo
-            $conteudoVideo = get_meta_tags($fullUrl);
-            $titleVideo  = (!empty($conteudoVideo['title']) ? $conteudoVideo['title'] : NULL);
-            $DescVideo  = (!empty( $conteudoVideo['description']) ?  $conteudoVideo['description'] : NULL);
+        $strg   = 'v=';
+        $youtb = '/' . $strg . '/';//verifica a ocorrencia "v=" na string
+        if (preg_match($youtb, $urlVideo)) {
+            $url = strip_tags(trim($urlVideo));
+            if (substr_count($url, 'youtube') == 1) {
+                $idVideo = substr(strstr($url, "v="), +2);//pega depois da letra v=
+                $idVid = ((strlen($idVideo) > 11) ? substr($idVideo, 0, 11) : $idVideo);//verifica se existe caracteres a mais e corta a url deixando somente 11 caracteres.
+                $thumb = 'http://i1.ytimg.com/vi/' . $idVid . '/default.jpg';
+                $resUrl = strstr($url, "v=", true);//pega antes da v=
+                $fullUrl = $resUrl . 'v=' . $idVideo;//aki junta tudo
+                $conteudoVideo = get_meta_tags($fullUrl);
+                $titleVideo = (!empty($conteudoVideo['title']) ? $conteudoVideo['title'] : null);
+                $DescVideo = (!empty($conteudoVideo['description']) ? $conteudoVideo['description'] : null);
 
-            $dadosVdTube=[
-                            "titulo_video"       =>  $titleVideo,
-                            "descricao_video"    =>  $DescVideo,
-                            "thumb_video"        =>  $thumb,
-                            "embed_video"        =>  $idVid
-                        ];
-            return $this->InsertVideo($dadosVdTube);
+                $dadosVdTube = [
+                    "titulo_video" => $titleVideo,
+                    "descricao_video" => $DescVideo,
+                    "thumb_video" => $thumb,
+                    "embed_video" => $idVid
+                ];
+                return $this->InsertVideo($dadosVdTube);
+            }
+        } else {
+             $this->dados['retorno'] = Alert::AjaxDanger("<b>Não é possível adicionar a playlist de vídeos.</br>
+                                                            Vídeo não foi adicionado direto do YOU TUBE</b>");
+            $this->dados['redirect'] = Alert::AjaxRedirect("gallery/addGalVid");
+            $this->return_ajax_error($this->dados);
         }
     }
 
