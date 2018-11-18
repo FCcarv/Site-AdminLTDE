@@ -15,12 +15,43 @@ class homeController extends Controller {
 	public function index() {
 		$dados = [];
 		$u     = new Users();
+        $ses = new Session();
+        $Hm = new HomePag();
 		$u->setLogUser();
 
 		$dados['user_id']    = $u->getId();
 		$dados['user_email'] = $u->getEmail();
 
+		//Exibe conteudo na view
+		$dados['PostView'] = $Hm->PostsView();
+		$dados['PostDest'] = $Hm->PostsDestaques();
+		$dados['Message'] = $Hm->getMsgHome();
+		$dados['Browsers'] = $Hm->getBrowsers();
+
+        //Qtde visitas do Site por navegador
+        $dados['totalViews'] = $Hm->getTotalViewsNav();
+        //Qtde Usuarios
+		$dados['ViewsUser'] = $Hm->getTotalViewsUser();
+		//Qtde visitas do Site
+		$dados['ViewsSite'] = $Hm->getTotalViews();
+		//Qtde Páginas Visitadas
+		$dados['ViewsPage'] = $Hm->getTotalPages();
+		//Qtde Posts do Site
+		$dados['ViewsPost'] = $Hm->getTotalPosts();
+
+
+        $dados['session']  = $ses;
+
+        //usuario logado
+        $dados['listUserinfo']  = $u->listUser();
+
+
 		$this->loadTemplate('home', $dados);
 	}
+
+    public function sessionViews()
+    {
+
+    }
 
 }

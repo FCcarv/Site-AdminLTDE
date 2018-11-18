@@ -47,7 +47,7 @@ class MessagePost extends Model
         }
     }
 
-    public function getMsg()
+     public function getMsg()
     {
         $sql = $this->db->prepare("SELECT * FROM mensagens ORDER BY id_mensagem DESC");
         try {

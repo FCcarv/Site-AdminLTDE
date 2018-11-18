@@ -94,7 +94,7 @@ class loginController extends Controller {
 			if (Check::isMail($fieldEmail)) {
 
 				$recupera['Assunto']       = 'Mensagem via Site!';
-				$recupera['mensagem']      = 'Por favor não responda esse email.Este email é apenas recuperar os dados do usuário.!';
+				$recupera['mensagem']      = 'Por favor não responda esse email.Este email é apenas para recuperar os dados do usuário.!';
 				$recupera['DestinoNome']   = 'ADMINISTRA - IZfriggi';
 				$recupera['DestinoEmail']  = 'contazf@institutozfriggi.com.br';
 				$recupera['RecuperaEmail'] = $fieldEmail;

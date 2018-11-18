@@ -98,13 +98,12 @@ class Post extends Model
         }//
     }
 
-
     /*Seleciona os posts*/
+    //public function Posts($nome_user, $idGpPerm, $offset, $limit)
     public function Posts($nome_user, $idGpPerm, $offset, $limit)
     {
       if ($idGpPerm == 1){
           $sql = $this->db->prepare("SELECT * FROM posts ORDER BY status_post ASC, date_post DESC LIMIT $limit OFFSET $offset");
-
       }else{
           $sql = $this->db->prepare("SELECT * FROM posts WHERE permissao_post = :id_permissao AND autor_post = :nameUser ORDER BY status_post ASC, date_post DESC LIMIT $limit OFFSET $offset");
           $sql->bindValue(":id_permissao", $idGpPerm);

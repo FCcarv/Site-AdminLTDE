@@ -44,7 +44,14 @@
                                         <?php foreach ($users_list as $us): ?>
                                         <tbody>
                                         <tr>
-                                            <td><img class="img-responsive" title="Photo-Usuario-<?=$us['nome_user']?>" src="<?= BASE . 'tim.php?src=admin/assets/img/ft-perfil/' . $us['foto_user'] . '&w=80&h=80'?>" alt="Photo-Usuario-<?=$us['nome_user']?>"></td>
+                                            <td>
+                                                <?php
+                                                if(!empty($us['foto_user'])):?>
+                                                    <img class="img-responsive" title="Photo-Usuario-<?=$us['nome_user']?>" src="<?= BASE . 'tim.php?src=admin/assets/img/ft-perfil/' . $us['foto_user'] . '&w=80&h=80'?>" alt="Photo-Usuario-<?=$us['nome_user']?>">
+                                                <?php else:?>
+                                                    <img title="Photo-Usuario-default" src="<?=BASEADMIN?>/assets/img/ft-perfil/user1-128x128.png" alt="Photo-Usuario-default" with="80" height="80"/>
+                                                <?php endif; ?>
+                                            </td>
                                             <td><h4><?= $us['nome_user']; ?></h4></td>
                                             <td><h4><?= $us['sobrenome_user']; ?></h4></td>
                                             <td><h4><?= $us['email_user']; ?></h4></td>

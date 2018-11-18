@@ -273,6 +273,297 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
+
+                <!--##############################################      editores        #################################################-->
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-clone"></i>
+
+                            <h3 class="box-title">Entreterimento</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?= BASEADMIN ?>assets/img/user6-128x128.jpg" alt="User Image">
+                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- post text -->
+                            <p>Far far away, behind the word mountains, far from the
+                                countries Vokalia and Consonantia, there live the blind
+                                texts. Separated they live in Bookmarksgrove right at</p>
+                            <!-- Attachment -->
+                            <div class="attachment-block clearfix">
+                                <img class="attachment-img" src="<?= BASEADMIN ?>assets/img/photo1.png" alt="Attachment Image">
+
+                                <div class="attachment-pushed">
+                                    <h4 class="attachment-heading"><a href="http://www.lipsum.com/">Lorem ipsum text generator</a></h4>
+
+                                    <div class="attachment-text">
+                                        Description about the attachment can be placed here.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                                    </div>
+                                    <!-- /.attachment-text -->
+                                </div>
+                                <!-- /.attachment-pushed -->
+                            </div>
+                            <!-- /.attachment-block -->
+
+                            <!-- Social sharing buttons -->
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                            <span class="pull-right text-muted">45 likes - 2 comments</span>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-film"></i>
+
+                            <h3 class="box-title">Cultura</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?= BASEADMIN ?>assets/img/user6-128x128.jpg" alt="User Image">
+                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- post text -->
+                            <p>Far far away, behind the word mountains, far from the
+                                countries Vokalia and Consonantia, there live the blind
+                                texts. Separated they live in Bookmarksgrove right at</p>
+                            <!-- Attachment -->
+                            <div class="attachment-block clearfix">
+                                <img class="attachment-img" src="<?= BASEADMIN ?>assets/img/photo1.png" alt="Attachment Image">
+
+                                <div class="attachment-pushed">
+                                    <h4 class="attachment-heading"><a href="http://www.lipsum.com/">Lorem ipsum text generator</a></h4>
+
+                                    <div class="attachment-text">
+                                        Description about the attachment can be placed here.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                                    </div>
+                                    <!-- /.attachment-text -->
+                                </div>
+                                <!-- /.attachment-pushed -->
+                            </div>
+                            <!-- /.attachment-block -->
+
+                            <!-- Social sharing buttons -->
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                            <span class="pull-right text-muted">45 likes - 2 comments</span>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-keyboard-o"></i>
+
+                            <h3 class="box-title">Bem-estar</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?= BASEADMIN ?>assets/img/user6-128x128.jpg" alt="User Image">
+                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- post text -->
+                            <p>Far far away, behind the word mountains, far from the
+                                countries Vokalia and Consonantia, there live the blind
+                                texts. Separated they live in Bookmarksgrove right at</p>
+                            <!-- Attachment -->
+                            <div class="attachment-block clearfix">
+                                <img class="attachment-img" src="<?= BASEADMIN ?>assets/img/photo1.png" alt="Attachment Image">
+
+                                <div class="attachment-pushed">
+                                    <h4 class="attachment-heading"><a href="http://www.lipsum.com/">Lorem ipsum text generator</a></h4>
+
+                                    <div class="attachment-text">
+                                        Description about the attachment can be placed here.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                                    </div>
+                                    <!-- /.attachment-text -->
+                                </div>
+                                <!-- /.attachment-pushed -->
+                            </div>
+                            <!-- /.attachment-block -->
+
+                            <!-- Social sharing buttons -->
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                            <span class="pull-right text-muted">45 likes - 2 comments</span>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-cube"></i>
+
+                            <h3 class="box-title">Comportamento</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?= BASEADMIN ?>assets/img/user6-128x128.jpg" alt="User Image">
+                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- post text -->
+                            <p>Far far away, behind the word mountains, far from the
+                                countries Vokalia and Consonantia, there live the blind
+                                texts. Separated they live in Bookmarksgrove right at</p>
+                            <!-- Attachment -->
+                            <div class="attachment-block clearfix">
+                                <img class="attachment-img" src="<?= BASEADMIN ?>assets/img/photo1.png" alt="Attachment Image">
+
+                                <div class="attachment-pushed">
+                                    <h4 class="attachment-heading"><a href="http://www.lipsum.com/">Lorem ipsum text generator</a></h4>
+
+                                    <div class="attachment-text">
+                                        Description about the attachment can be placed here.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                                    </div>
+                                    <!-- /.attachment-text -->
+                                </div>
+                                <!-- /.attachment-pushed -->
+                            </div>
+                            <!-- /.attachment-block -->
+
+                            <!-- Social sharing buttons -->
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                            <span class="pull-right text-muted">45 likes - 2 comments</span>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-child"></i>
+
+                            <h3 class="box-title">Social</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?= BASEADMIN ?>assets/img/user6-128x128.jpg" alt="User Image">
+                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- post text -->
+                            <p>Far far away, behind the word mountains, far from the
+                                countries Vokalia and Consonantia, there live the blind
+                                texts. Separated they live in Bookmarksgrove right at</p>
+                            <!-- Attachment -->
+                            <div class="attachment-block clearfix">
+                                <img class="attachment-img" src="<?= BASEADMIN ?>assets/img/photo1.png" alt="Attachment Image">
+
+                                <div class="attachment-pushed">
+                                    <h4 class="attachment-heading"><a href="http://www.lipsum.com/">Lorem ipsum text generator</a></h4>
+
+                                    <div class="attachment-text">
+                                        Description about the attachment can be placed here.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                                    </div>
+                                    <!-- /.attachment-text -->
+                                </div>
+                                <!-- /.attachment-pushed -->
+                            </div>
+                            <!-- /.attachment-block -->
+
+                            <!-- Social sharing buttons -->
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                            <span class="pull-right text-muted">45 likes - 2 comments</span>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!--##############################################      editores fim        #################################################-->
                 <div class="col-md-6">
                     <!-- Default box -->
                     <div class="box">

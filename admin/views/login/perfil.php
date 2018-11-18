@@ -24,10 +24,11 @@
                     <div class="col-md-offset-1 col-md-11">
                         <div class="row">
                             <div class="box-header with-border">
-                                <h2 class="page-header">
-                                    <i class="fa fa-user"></i> Editar Usuários
-                                </h2>
+                                <h4 class="pull-left margin"><i class="fa fa-smile-o"></i> Olá <b> <?=$infoUS['nome_user'] .' '. $infoUS['sobrenome_user'];?></b> seja bem vindo(a)
+                                    <i class="fa fa-thumbs-o-up"></i></h4>
                             </div>
+                            <br>
+                            <br>
                             <div class="box-body">
                                 <aside class="col-md-4">
                                     <div class="box-body box-profile">
@@ -40,8 +41,6 @@
                                                     <?php else:?>
                                                         <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/user1-128x128.png" alt="User profile picture"width="180">
                                                     <?php endif;
-
-
                                                     ?>
                                                 </div>
                                                 <!-- /.widget-user-image -->
@@ -76,7 +75,6 @@
                                                 <div class="form-group">
                                                     <label for="senha">Password</label>
                                                     <input type="password" class="form-control input-lg" name="pass_us" placeholder="Password" >
-                                                    <!--                                            <input type="hidden" name="pass_us" value="--><?//=$user_info['pass_user'];?><!--">-->
                                                     <input type="hidden" name="id_us" value="<?=$infoUS['id_user'];?>">
                                                 </div>
                                                 <div class="form-group">
@@ -117,7 +115,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    Olá <?=$infoUS['nome_user'] .' '. $infoUS['sobrenome_user'];?> seja bem vindo(a) ao seu perfil!!
+                   <b> <?=$infoUS['nome_user'] .' '. $infoUS['sobrenome_user'];?></b> fique à vontade para atualizar o seu perfil!!
                 </div>
                 <!-- /.box-footer-->
             </div>

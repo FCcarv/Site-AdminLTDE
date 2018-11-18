@@ -70,7 +70,7 @@ class Users extends Model
     }
 
 /*LISTA  OS USUÁRIOS DO SISTEMA E OS SEUS GRUPOS DE PERMISSAO ASSOSSIADOS COM O MESMO.*/
-    public function getListUsers($id){
+    public function getListUsers(){
 
     $array = array();
 

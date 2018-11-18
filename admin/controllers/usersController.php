@@ -242,43 +242,6 @@ class usersController extends Controller
         exit;
     }
 
-/*Edita as fotos na area de perfil do usuario, fora do painel*/
-/*    public function editFotosPerfil()
-    {
-        $dados = [];
-        $u = new Users();
-        $us = new UserRepository();
-        $u->setLogUser();
-
-        if ($u->existPermissao('users_perfil')) {
-            $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
-
-                if (isset($dadosPerm['id_us']) && !empty($dadosPerm['id_us'])) {
-                    $id_us = $dadosPerm['id_us'];
-                    if (isset($_FILES['ftos_us']) && !empty($_FILES['ftos_us'])) {
-                        $ftos_us = $_FILES['ftos_us'];
-
-                    } else {
-                        $ftos_us = array();
-                    }
-                    $ft = $us->updateFto($ftos_us, $id_us);
-                    die;
-
-                    /*      if ($ft == true) {
-                              $dados['retorno'] = Alert::AjaxSuccess("<b>Foto atualizada com sucesso!!!</b>");
-                              $dados['redirect'] = Alert::AjaxRedirect("users");
-                          } else {
-                              $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
-                              $dados['redirect'] = Alert::AjaxRedirect("users");
-                          }
-                }
-            } else {
-                $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN . "users");
-            }
-            echo json_encode($dados);
-            exit;
-        }*/
-
 /*Chama a view de usuario da area de perfil fora do painel*/
     public function FtosPerfil($id_us)
     {
