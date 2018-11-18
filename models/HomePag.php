@@ -38,7 +38,7 @@ class HomePag extends Model
 //Exibe a mensagem mais recente cadastrada
     public function getMsgHome()
     {
-        $sql = $this->db->prepare("SELECT * FROM mensagens ORDER BY id_mensagem DESC LIMIT 1");
+        $sql = $this->db->prepare("SELECT * FROM mensagens ORDER BY id_mensagem DESC LIMIT 3");
         try {
             $sql->execute();
             if ($sql->rowCount() > 0) {
