@@ -1,8 +1,0 @@
-
-tirando image view
-
- <?php
-                                   // $Postcover = (!empty($cover_post) && file_exists("../uploads/{$cover_post}") && !is_dir("../uploads/{$cover_post}") ? "uploads/{$cover_post}" : '../../assets/dist/img/no_image.jpg');
-                                    ?>
-                                    <img class="img-responsive cap_post" src="<?= BASE . 'tim.php?src=/uploads/' . $cover_post . '&w=1600&h=1300' ?>"
-                                         title="Photo Capa" alt="Photo Capa" default="'../tim.php?src='<?= $cover_post ?>'&w=1200&h=900'">
