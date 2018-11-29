@@ -1,33 +1,35 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="pt-br" class="no-js">
-        <head>
-            <meta charset="utf-8"/>
-            <title>Instituto Zezinho Friggi</title>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta content="width=device-width, initial-scale=1" name="viewport"/>
-            <meta content="" name="description"/>
-            <meta content="" name="author"/>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Instituto Zezinho Friggi</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
 
-            <!-- GLOBAL MANDATORY STYLES -->
-            <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-            <link href="<?= BASE?>assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-            <link href="<?= BASE?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="<?= BASE?>assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= BASE?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= BASE?>assets/css/bootstrap.min.css.map" rel="stylesheet" type="text/css"/>
 
-            <!-- PAGE LEVEL PLUGIN STYLES -->
-            <link href="<?= BASE?>assets/css/animate.css" rel="stylesheet">
-            <link href="<?= BASE?>assets/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="<?= BASE?>assets/css/animate.css" rel="stylesheet">
+        <link href="<?= BASE?>assets/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<?= BASE ?>assets/plugins/shadowbox/shadowbox.css">
+        <!-- THEME STYLES -->
+        <link href="<?= BASE?>assets/css/estilo.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= BASE?>assets/css/style-editor.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= BASE?>assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<?= BASE?>assets/plugins/f-awesome/css/font-awesome.css">
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">-->
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="<?= BASE?>assets/imagem/favicon.png"/>
 
-            <!-- THEME STYLES -->
-            <link href="<?= BASE?>assets/css/estilo.css" rel="stylesheet" type="text/css"/>
-            <link href="<?= BASE?>assets/css/main.css" rel="stylesheet" type="text/css"/>
-            <link rel="stylesheet" href="<?= BASE?>assets/plugins/f-awesome/css/font-awesome.css">
-            <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">-->
-            <!-- Favicon -->
-            <link rel="shortcut icon" href="<?= BASE?>assets/imagem/favicon.png"/>
-
-        </head>
-        <!-- BODY -->
-        <body>
+    </head>
+    <!-- BODY -->
+    <body>
         <!--========== HEADER ==========-->
         <header class="header navbar-fixed-top">
             <!-- Navbar -->
@@ -69,7 +71,8 @@
         <!--========== END HEADER ==========-->
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
         <!--========== FOOTER ==========-->
-        <footer class="footer">
+
+        <footer class="">
             <section id="bottom">
                 <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="row">
@@ -89,11 +92,11 @@
                         </div><!--/.col-md-3-->
 
                         <div class="col-md-4col-sm-6">
-                            <div class="widget">
-                                <h2 class="h2">Redes Sociais</h2>
+                            <div class="widget second">
+                                <h3>Redes Sociais</h3>
                                 <ul class="icons">
-                                    <li><a class="btn btn-default" href="https://twitter.com/InstZFriggi"><i class="icon style2 fa fa-twitter fa-3x" ></i></a></li>
-                                    <li><a class="btn btn-default" href="https://www.facebook.com/Instituto-Zezinho-Friggi-1493860454205536/"><i class="icon style2 fa fa-facebook fa-3x "></i></a></li>
+                                    <li><a class="btn btn-default" href="#"><i class="icon style2 fa fa-twitter fa-3x" ></i></a></li>
+                                    <li><a class="btn btn-default" href="#"><i class="icon style2 fa fa-facebook fa-3x "></i></a></li>
                                     <li><a class="btn btn-default" href="#"><i class="icon style2 fa fa-instagram fa-3x"></i></a></li>
                                     <li><a class="btn btn-default" href="#"><i class="icon style2 fa fa-envelope-o fa-3x"></i></a></li>
                                 </ul>
@@ -106,8 +109,8 @@
             <footer id="footer" class="midnight-blue">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6">
-                            &copy; 2018 <a href="http://InstitutoZFriggi.com.br" title="Instituto Zezinho Friggi">Instituto Zezinho Friggi</a> -  Todos Direitos Reservados.
+                        <div class="col-sm-6 linkft">
+                            &copy; 2016 <a href="http://InstitutoZFriggi.com.br" title="Instituto Zezinho Friggi">Instituto Zezinho Friggi</a> -  Todos Direitos Reservados.
                         </div>
                         <div class="col-sm-6">
                             <ul class="pull-right">
@@ -121,18 +124,17 @@
                 </div>
             </footer><!--/#footer-->
         </footer><!--class footer-->
-        <!--========== END FOOTER ==========-->
 
+        <!--========== END FOOTER ==========-->
         <!-- Back To Top -->
         <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
-
         <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
         <!-- CORE PLUGINS -->
-       <!-- <script src="js/jquery.min.js" type="text/javascript"></script>-->
+        <!-- <script src="js/jquery.min.js" type="text/javascript"></script>-->
         <script src="<?= BASE?>assets/js/jquery.min.js"></script>
         <script src="<?= BASE?>assets/js/jquery-migrate.min.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/bootstrap.min.js"></script>
-
+        <script src="<?= BASE?>assets/plugins/shadowbox/shadowbox.js"></script>
         <!-- PAGE LEVEL PLUGINS -->
         <script src="<?= BASE?>assets/js/jquery.easing.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/jquery.back-to-top.js" type="text/javascript"></script>
@@ -145,11 +147,11 @@
         <!-- PAGE LEVEL SCRIPTS -->
         <script src="<?= BASE?>assets/js/layout.min.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/components/wow.min.js" type="text/javascript"></script>
+
         <script src="<?= BASE?>assets/js/components/swiper.min.js" type="text/javascript"></script>
+        <script src="<?= BASE?>assets/js/maps/swiper.jquery.min.js.map" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/components/masonry.min.js" type="text/javascript"></script>
-
-
-
+        <script src="<?= BASE?>assets/js/scripts.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             var BASE = '<?php echo BASE; ?>';

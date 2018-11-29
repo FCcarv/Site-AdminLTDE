@@ -1,9 +1,12 @@
 <?php
-
 /**
  * Session.class [ HELPER ]
- * Responsável pelas estatísticas, sessões e atualizações de tráfego do sistema!
+ * Responsável pelas estatísticas, sessões e atualizações de tráfego do sistema
+ * User: franc
+ * Date: 29/11/18
+ * Time: 17:51
  */
+
 class Session extends Model
 {
 
@@ -20,7 +23,7 @@ class Session extends Model
 
     //Verifica e executa todos os métodos da classe!
     //: siteviews
-    private function CheckSession($Cache = null) {
+    public function CheckSession($Cache = null) {
         $this->Date = date('Y-m-d');
         $this->Cache = ((int) $Cache ? $Cache : 20);
 
@@ -266,15 +269,14 @@ class Session extends Model
     }
 
     //Atualiza tabela com dados de navegadores!
-    private function BrowserUpdate(){
+    public function BrowserUpdate(){
         $readAgent = $this->readBrowser();
-        foreach ($readAgent as $agent);
-        if ($readAgent == false):
+         if ($readAgent == false):
             $ArrAgent = ['name_agent' => $this->Browser, 'views_agent' => 1];
             $this->insertBrowser($ArrAgent);
         else:
 
-            $ArrAgent = ['name_agent' => $this->Browser, 'views_agent' => $agent['views_agent'] + 1];
+            $ArrAgent = ['name_agent' => $this->Browser, 'views_agent' => $readAgent[0]['views_agent'] + 1];
             $this->updateBrowser($ArrAgent);
         endif;
     }

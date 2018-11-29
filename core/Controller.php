@@ -14,9 +14,7 @@ class Controller {
     }
 
     public function loadTemplate($viewName, $viewData = array()) {
-        /*$user= new Users;
-        $dadosUser = $user->selectID($_SESSION['userlogin']['id_user']);
-        extract($dadosUser);*/
+
        include 'views/template.php';
     }
 

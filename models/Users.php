@@ -4,8 +4,6 @@
  * User: francisco
  * Date: 24/02/18
  * Time: 08:55
- *
- *
  * CLASSE RESPONSÁVEL POR  MANIPULAR E TRATAR  TODAS INFORMAÇÕES DOS USUÁRIOS DO SISTEMA.
  */
 class Users extends Model
@@ -264,21 +262,25 @@ class Users extends Model
         }
     }
 
-    /*EXCLUI USUARIOS DO SISTEMA ,MASSOMENTE LOGADO COMO ADMIN EM NIVEL MAXIMO
+    /*EXCLUI USUARIOS DO SISTEMA ,MAS SOMENTE LOGADO COMO ADMIN EM NIVEL MAXIMO
+    *A exclusão do usuario só será feita , se não for o mesmo usuárto e se não for o único admin do sistema.
      */
-    public function delete($id_us) {
+    public function delete($id_us)
+    {
+      if(($id_us !== $_SESSION['userlogin']['id_user']) && ($id_us !== 1)){
         $sql = $this->db->prepare("DELETE FROM users WHERE id_user = :id");
         $sql->bindValue(":id", $id_us);
          try {
              $sql->execute();
              if ($sql->rowCount() == 1) {
-                 return $sql->fetch(PDO::FETCH_ASSOC);
-             } else {
-                 return false;
+                 return true;
              }
          } catch (PDOException $e) {
              die($e->getMessage());
          }
+      }else{
+          return false;
+      }
     }
 
     /*TEM  A RESPOMSABILIDADE DE LOGAR E DIRECIONAR O USUARIO A ENTRAR NO SISTEMA

@@ -31,13 +31,12 @@ class jornalPost extends Model
 
     public function InsertG_Drive_Link($dataJorn)
     {
-        $sql = $this->db->prepare("INSERT INTO jornalRegional (titulo_jornal, link_jornal)
-              VALUES (:titulo_jornal, :link_jornal)");
+        $sql = $this->db->prepare("INSERT INTO jornalRegional (titulo_jornal, link_jornal, slug_jornal)
+              VALUES (:titulo_jornal, :link_jornal, :slug_jornal)");
 
         $sql->bindValue(":titulo_jornal",      $dataJorn['titulo_jornal'], PDO::PARAM_STR);
         $sql->bindValue(":link_jornal",        $dataJorn['link_jornal'], PDO::PARAM_STR);
-
-
+        $sql->bindValue(":slug_jornal",        $dataJorn['slug_jornal'], PDO::PARAM_STR);
         try {
             $sql->execute();
             if ($sql->rowCount() == 1)
@@ -49,7 +48,7 @@ class jornalPost extends Model
 
     public function allgetJornal()
     {
-        $sql = $this->db->prepare("SELECT * FROM jornalRegional ORDER  BY titulo_jornal ASC");
+        $sql = $this->db->prepare("SELECT * FROM jornalRegional ORDER BY dataReg_jornal DESC");
         try {
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -67,11 +66,12 @@ class jornalPost extends Model
     public function upArqGoogleDrive($FormJornal)
     {
 
-        $sql = $this->db->prepare("UPDATE jornalRegional SET titulo_jornal = :tituloJornal, link_jornal = :linkJornal
+        $sql = $this->db->prepare("UPDATE jornalRegional SET titulo_jornal = :tituloJornal, link_jornal = :linkJornal,  slug_jornal = :slugJornal
              WHERE id_jornal = :idJornal");
 
         $sql->bindValue(":tituloJornal",      $FormJornal['jorn_title'], PDO::PARAM_STR);
         $sql->bindValue(":linkJornal",        $FormJornal['jorn_url'], PDO::PARAM_STR);
+        $sql->bindValue(":slugJornal",        $FormJornal['jorn_slug'], PDO::PARAM_STR);
         $sql->bindValue(":idJornal",          $FormJornal['jorn_id'], PDO::PARAM_STR);
        try {
             $sql->execute();

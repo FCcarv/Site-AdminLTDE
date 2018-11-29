@@ -74,6 +74,10 @@ $(function () {
         return false;
     });/*Fim do motor AJAX*/
 
+
+
+
+
     //excluir categoria
     $('.del').click(function () {
         var id= $(this).attr('id');
@@ -99,43 +103,6 @@ $(function () {
 
         });
     });
-    //############# POSTS
-    /*//CAPA VIEW
-    $('.loadimage').change(function () {
-        var input = $(this);
-        var target = $('.' + input.attr('name'));
-        var fileDefault = target.attr('default');
-
-        if (!input.val()) {
-            target.fadeOut('fast', function () {
-                $(this).attr('src', fileDefault).fadeIn('slow');
-            });
-            return false;
-        }
-
-        if (this.files && this.files[0].type.match('image.*')) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                target.fadeOut('fast', function () {
-                    $(this).attr('src', e.target.result).width('100%').height('100%').fadeIn('fast');
-                });
-            };
-            reader.readAsDataURL(this.files[0]);
-        } else {
-            Trigger('<div class="trigger trigger_alert trigger_ajax"><b class="icon-warning">ERRO AO SELECIONAR:</b> O arquivo <b>' + this.files[0].name + '</b> não é válido! <b>Selecione uma imagem JPG ou PNG!</b></div>');
-            target.fadeOut('fast', function () {
-                $(this).attr('src', fileDefault).fadeIn('slow');
-            });
-            input.val('');
-            return false;
-        }
-    });*/
-
-/*
-//MODAL UPLOAD
-    $('.Control_imageupload_close').click(function () {
-        $("div#" + $(this).attr("id")).fadeOut("fast");
-    });*/
 
     //GALLERY IMAGE REMOVE
     $('.remove').click(function () {
@@ -201,8 +168,6 @@ $(function () {
                         window.location.href = BASE + data.redirect[0];
                     }, data.redirect[1]);
                 }
-
-
             }
         });
         return false;
@@ -225,7 +190,6 @@ $(function () {
             },"json");
         }
     });
-
 
 /*funçaõ de mater ou não o titulo do post*/
     $(".title_post").blur(function(){
@@ -257,6 +221,8 @@ $(function () {
 
         });
     });
+
+
         $(document).on('click', ".mudarTitlePost", function(){
             $(".title_post").focus();
             removeBox();
@@ -266,6 +232,8 @@ $(function () {
             $(".title_exist").val(0);
             removeBox();
         });
+
+
 //essa função apenas retira a box de  mensagem apos  ser concluída a ação
 function removeBox(){
     $.each(alerts, function (key, value) {
@@ -279,7 +247,66 @@ function removeBox(){
     $('.titulo').html('');//Titulo no indice 2
     $('.result').html('');//Mensagem de retorno no indice 3
 }
+//botão cancelar exclusão de usuarios
+    $(document).on('click', ".cancel", function(){
+        $('.alerta').removeClass('alert alert-danger');
+        $('.icones').removeClass('fa fa-danger');
+        $('.titulo').html('');//Titulo no indice 2
+        $('.result').html('');//Mensagem de retorno no indice 3
+    });
 
+//botao excluir com msg o usuario
+    $(document).on('click', ".esc", function(){
+        $(this).fadeOut('3000', function () {
+            $('.alerta').remove();
+        });
+    });
+
+
+//botao excluir com msg usuario
+   $(".deleteConfirm").click( function () {
+        var deletar_id = $(this).attr('id');
+        var controller = $(this).attr('data-controller');
+
+            $('.alerta').addClass('alert alert-danger');
+            $('.icones').addClass('fa fa-danger');
+            $('.titulo').html('Deseja realmente excluir esse usuário?');
+            $('.result').html('<p><button class="btn btn-warning exclui esc" data-controller="'+controller+'" id="'+deletar_id+'"><i class="glyphicon glyphicon-ban-circle"></i>Excluir</button><button class="btn btn-info pull-right cancel"><i class="fa fa-sign-out"></i>Cancelar</button></p>');
+
+    });
+
+    //excluir usuario
+    $(document).on('click', ".exclui", function(){
+        var id= $(this).attr('id');
+        var cap = $(this).attr('data-controller');
+        $.ajax({
+            url: BASE + cap,
+            data: {id: id},
+            type: "POST",
+            dataType: 'json',
+            beforeSend: function (data) {
+                $.each(alerts, function (key, value) {
+                    $('.alert').removeClass(value);
+                });
+            },
+            success: function (data) {
+                if (data.retorno) {
+                    $('.alerta').addClass(data.retorno[0]);
+                    $('.icones').addClass(data.retorno[1]);//icone tem que passar no indice 1
+                    $('.titulo').html(data.retorno[2]);//Titulo no indice 2
+                    $('.result').html(data.retorno[3]);//Mensagem de retorno no indice 3
+                }
+
+                /*Redirecionar*/
+                if (data.redirect) {
+                    window.setTimeout(function () {
+                        window.location.href = BASE + data.redirect[0];
+                    }, data.redirect[1]);
+                }
+            }
+
+        });
+    });
 });
 
 

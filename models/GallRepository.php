@@ -74,7 +74,7 @@ class GallRepository extends GalPost
     //Cadasstra a galetia de fotos  ou álbum e todas as informaçoes do formulario
     public function addGalImage($FormGallery)
     {
-        $this->titleImg_exists($FormGallery);
+        $this->titleImg_exists($FormGallery['title_galft']);
         $FormGallery['img_galft'] = (!empty($_FILES['img_galft']['name']) ? $_FILES['img_galft'] : null);
 
       if($FormGallery['img_galft'] != null || !empty($_FILES['img_galft']['name'])) {

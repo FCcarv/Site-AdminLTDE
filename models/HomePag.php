@@ -139,4 +139,150 @@ class HomePag extends Model
         }
     }
 
+
+    ######################################### FRONT BUSCAS E LEITURAS ##########################################
+
+    public function editor_list()
+    {
+        $sql = $this->db->prepare("SELECT * FROM users WHERE id_grup_permissao = 4 ORDER BY nome_user ASC, registro_user DESC LIMIT 6");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                $sql= $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $sql;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*Seleciona apenas 3 de todos posts como Destaques*/
+    public function PostsFront()
+    {
+        $sql = $this->db->prepare("SELECT * FROM posts ORDER BY status_post  ASC LIMIT 9");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0)
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }//
+    }
+
+
+    /*Seleciona apenas 3 de todos posts como Destaques*/
+    public function postsPag($slugPosts)
+    {
+        $sql = $this->db->prepare("SELECT * FROM posts WHERE slug_post= :slugPosts");
+        $sql->bindValue(":slugPosts", $slugPosts);
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0)
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }//
+    }
+
+
+    /*##################################################GALERIA DE FOTOS#########################################################*/
+    /*Seleciona as galerias de fotos por ordem alfabética*/
+    public function GalleryFts()
+    {
+        $sql = $this->db->prepare("SELECT * FROM fotos_albuns WHERE status_fto_albuns = 1 ORDER BY title_fto_albuns ASC LIMIT 6");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*Seleciona as imagens pelo ID das galerias e albuns de fotos*/
+    public function ImgGftID($id_fto)
+    {
+        $sql = $this->db->prepare ("SELECT * FROM fotos WHERE id_fto_albuns = :id_gal");
+        $sql->bindValue(":id_gal", $id_fto);
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0){
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*seleciona galetias pelo ID*/
+    public function selectGalFotsSlug($slugft)
+    {
+        $sql = $this->db->prepare ("SELECT * FROM fotos_albuns WHERE slug_fto_albuns = :slugft");
+        $sql->bindValue(":slugft", $slugft);
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0){
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*################################################# VIDEOS #####################################3*/
+    /*Faz a leitura na tabela enviando o offset e o limite
+    usado na paginação dos videos .
+    */
+    public function VideosFront()
+    {
+        $sql = $this->db->prepare("SELECT * FROM videos WHERE status_video ORDER BY id_video DESC LIMIT 6");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    #####################################   Empresas   ###################################################################
+
+    /*faz a seleção das empresas no banco de dados e ajuda na paginação das empresas cadastradas*/
+    public function company()
+    {
+        $sql = $this->db->prepare("SELECT * FROM clientes_empresas ORDER BY id_cliente_empresa");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function Msgs()
+    {
+        $sql = $this->db->prepare("SELECT * FROM mensagens ORDER BY id_mensagem DESC");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

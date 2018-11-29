@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <input type="hidden" class="form-control input-lg" name="gal_status">
+                                                    <input type="hidden" class="form-control input-lg" name="gal_status" value="0">
                                                 </div>
                                             </div
                                             <div class="box-footer clearfix">

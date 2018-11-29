@@ -1,10 +1,4 @@
 <?php
-
-/*
- * 
- 
- */
-
 /**
  * Description of CHECK
  *

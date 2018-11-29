@@ -58,28 +58,6 @@ class postController extends Controller
             header("Location: " . BASEADMIN);
         }
     }
-
-    /*Busca a view de adicionar add posts*/
-    public function postsAdmin()
-    {
-        $dados = [];
-        $permite = new Permissao();
-        $c = new Category;
-        $u = new Users();
-        $u->setLogUser();
-
-        if ($u->existPermissao('posts_admin_view')) {
-            $dados['listUserinfo']  = $u->listUser();//info do user logado
-            $nome_user = $dados['listUserinfo']['nome_user'];//nome user logado
-            $dados['listCat_Subc']  = $c->listCat_Subcategory($nome_user);//categorias e sucategorias
-            $dados['grup_List']     = $permite->getGrupList();//grupos e pemissoes de todos usuarios cadastrados no sistema
-
-            $this->loadTemplate('noticia/postAll', $dados);
-        } else {
-            header("Location: " . BASEADMIN);
-        }
-    }
-
         /*Busca a view de adicionar add posts*/
     public function add()
     {
@@ -286,7 +264,6 @@ class postController extends Controller
         }
 
         $pt->return_ajax_error($dados);
-        exit();
     }
 
     //Insere imagens dentro do editor TinyMCE e salva na pasta imageTinymce

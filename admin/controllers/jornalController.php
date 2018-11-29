@@ -8,8 +8,6 @@
 
 class jornalController extends Controller
 {
-
-
     public function __construct()
     {
         parent::__construct();
@@ -20,9 +18,7 @@ class jornalController extends Controller
         }
     }
 
-
-
-        public function index()
+       public function index()
     {
         $dados = [];
         $u = new Users();
@@ -119,6 +115,8 @@ class jornalController extends Controller
         if ($u->existPermissao('jornal_view')) {
 
             $FormJornal= filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
+            $jorn_slug = 'jr-'. $FormJornal['jorn_title'];
+            $FormJornal['jorn_slug'] = Check::Name($jorn_slug);
 
             $UpdateJr = $jRep->updateJornal($FormJornal);
             if (isset($UpdateJr) && $UpdateJr == true) {

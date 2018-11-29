@@ -36,16 +36,25 @@
                                                 <?php
                                                 if(!empty($selectGallery)) {
                                                     foreach ($selectGallery as $gallery):
-                                                        extract($gallery); ?>
-                                                        <option value="<?= $id_fto_albuns ?>" data-p="<?=$title_fto_albuns?>"><?= $title_fto_albuns ?></option>
+                                                        extract($gallery);
+
+
+                                                            ?>
+
+                                                        <option value="<?= $id_fto_albuns ?>" data-p="<?=$title_fto_albuns?>"><?= (!empty($title_fto_albuns) ? $title_fto_albuns : 'Não existe galerias cadastradas');?></option>
                                                     <?php endforeach;
-                                                }
-                                                ?>
-                                            </select>
+                                                }else{
+
+                                                    echo "<div class=\"alert alert-info alert-dismissible\">
+                                                                   <h4><i class=\"icon fa fa-info\"></i>Opss!!</h4>
+                                                                Você não tem postagens inseridas nessa sistema!!
+                                                          </div>";
+                                                }?>
+                                             </select>
                                         </div>
                                         <div>
                                             <!-- campo tb categorias Parent Cat input hidden-->
-                                            <input type="hidden" class="form-control input-lg albImg" name="title_image" value="<?=$title_fto_albuns?>"/>
+                                            <input type="hidden" class="form-control input-lg albImg" name="title_image" value="<?= (!empty($title_fto_albuns) ? $title_fto_albuns : 'Não existe galerias cadastradas');?>"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="InputFile">Imagens</label>

@@ -15,7 +15,7 @@ class homeController extends Controller {
 	public function index() {
 		$dados = [];
 		$u     = new Users();
-        $ses = new Session();
+
         $Hm = new HomePag();
 		$u->setLogUser();
 
@@ -40,7 +40,6 @@ class homeController extends Controller {
 		$dados['ViewsPost'] = $Hm->getTotalPosts();
 
 
-        $dados['session']  = $ses;
 
         //usuario logado
         $dados['listUserinfo']  = $u->listUser();

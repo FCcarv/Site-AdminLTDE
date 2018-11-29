@@ -49,7 +49,7 @@
                                                 if(!empty($us['foto_user'])):?>
                                                     <img class="img-responsive" title="Photo-Usuario-<?=$us['nome_user']?>" src="<?= BASE . 'tim.php?src=admin/assets/img/ft-perfil/' . $us['foto_user'] . '&w=80&h=80'?>" alt="Photo-Usuario-<?=$us['nome_user']?>">
                                                 <?php else:?>
-                                                    <img title="Photo-Usuario-default" src="<?=BASEADMIN?>/assets/img/ft-perfil/user1-128x128.png" alt="Photo-Usuario-default" with="80" height="80"/>
+                                                    <img title="Photo-Usuario-default" src="<?=BASEADMIN?>/assets/img/ft-perfil/padrao.jpg" alt="Photo-Usuario-default" with="80" height="80"/>
                                                 <?php endif; ?>
                                             </td>
                                             <td><h4><?= $us['nome_user']; ?></h4></td>
@@ -58,10 +58,8 @@
                                             <td><h4><?= date("d-m-y", strtotime($us['registro_user'])); ?></h4></td>
                                             <td><h4><?= $us['nome_grup_permissao']; ?></h4></td>
                                             <td>
-                                                <a href="<?= BASEADMIN ?>users/editUs/<?= $us['id_user']; ?>"><span
-                                                            class=" btn btn-warning glyphicon glyphicon-edit"> Editar</span></a>
-                                                <a href="<?= BASEADMIN ?>users/delete/<?= $us['id_user']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">
-                                                    <span class="btn btn-danger glyphicon glyphicon-trash"> Excluir</span></a>
+                                                <a href="<?= BASEADMIN ?>users/editUs/<?= $us['id_user']; ?>"><span class=" btn btn-warning glyphicon glyphicon-edit"> Editar</span></a>
+                                                <button  class="btn btn-danger glyphicon glyphicon-trash deleteConfirm " data-controller="users/delete/" id="<?= $us['id_user'];?>">Excluir</button>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>

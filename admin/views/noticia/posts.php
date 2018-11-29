@@ -96,7 +96,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    Minhas Postagens do sistema!!
+                    Artigos cadastrados no sistema!!
                 </div>
                 <!-- /.box-footer-->
             </div>

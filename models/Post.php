@@ -1,7 +1,11 @@
 <?php
 /**
  * Classe model de postagens  de  fatos e notícias
+ * User: franc
+ * Date: 29/11/18
+ * Time: 17:51
  */
+
 class Post extends Model
 {
 

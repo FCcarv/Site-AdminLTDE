@@ -22,14 +22,17 @@
                     <h2 class="box-title">Área administrativa</h2>
                 </div>
                 <div class="col-md-offset-1 box-header with-border">
-                    <h2><i class="fa fa-file-photo-o"></i>&nbsp;<strong><?php
+                    <h2><i class="fa fa-file-photo-o"></i>
+                        &nbsp;<strong><?php
                             if(!empty($getGAL)){
                                 foreach($getGAL as $gl):?>
                                     <?=$gl['title_fto_albuns']?>
                                 <?php
                                 endforeach;
                             }
-                            ?></strong></h2>
+                            ?>
+                        </strong>
+                    </h2>
                 </div>
                 <div class="box-body">
                     <div class="col-md-offset-1 col-md-11">
@@ -110,7 +113,8 @@
                             <?php
                             endforeach;
                         }
-                        ?></div>
+                        ?>
+                    </div>
 
                     <!-- /.box-footer-->
                 </div>

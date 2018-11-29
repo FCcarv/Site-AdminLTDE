@@ -38,17 +38,28 @@
                                                     <?php if(!empty($user_info['foto_user'])):?>
                                                         <img class="img-responsive img-circle" style="margin-left: 50px;" src="<?= BASEADMIN ?>assets/img/ft-perfil/<?=$user_info['foto_user'];?>" width="180" />
                                                     <?php else:?>
-                                                        <img class="profile-user-img img-responsive img-circle" src="<?= BASEADMIN ?>assets/img/ft-perfil/user1-128x128.png" alt="User profile picture"width="180">
+                                                        <img class="profile-user-img img-responsive img-circle" src="<?= BASEADMIN ?>assets/img/ft-perfil/padrao.jpg" alt="User profile picture"width="180">
                                                     <?php endif;?>
 
 
                                                     <h3 class="text-center"><?=$user_info['nome_user'] .' '.$user_info['sobrenome_user'];?></h3>
                                                 </div>
-                                                <div class="col-md-offset-1 box-body">
-                                                    <input type="file"  name="ftos_us"/>
-                                                    <input type="hidden" name="id_us" value="<?=$user_info['id_user'];?>">
-                                                </div>
-                                                <button value="Atualizar" class="col-md-offset-1 btn btn-primary"><i class="fa fa-image"></i>Atualizar Foto</button>
+                                                <?php if (! $_SESSION['userlogin']['id_grup_permissao'] == 0){?>
+                                                    <div class="col-md-offset-1 box-body">
+                                                        <input type="file"  name="ftos_us"/>
+                                                        <input type="hidden" name="id_us" value="<?=$user_info['id_user'];?>">
+                                                    </div>
+                                                    <button value="Atualizar" class="col-md-offset-1 btn btn-primary"><i class="fa fa-image"></i>Atualizar Foto</button>
+                                                    <?
+                                                }else{
+
+                                                    echo "<div class=\"alert alert-danger alert-dismissible\">
+                                                           <h4><i class=\"icon fa fa-info\"></i>Opss!!
+                                                        Seu cadastro esta limitado, por favor fale com admin para a liberação do seu acesso.</br>
+                                                                <strong>Email: fccarlos.carvalho@gmail.com</strong></h4>
+                                                  </div>";
+                                                }?>
+
                                             </div>
                                         </form>
                                     </div>
@@ -58,6 +69,7 @@
                                         <div class="tab-pane">
                                             <form  class="form" method="Post" id="users/edit">
                                                 <div class="form-group">
+                                                    <input type="hidden" name="id_us" value="<?=$user_info['id_user'];?>">
                                                     <label for="nome">Nome</label>
                                                     <input class="form-control input-lg" type="text" name="nome_us" value="<?=$user_info['nome_user'];?>" placeholder="Enter nome">
                                                 </div>
@@ -72,8 +84,8 @@
                                                 <div class="form-group">
                                                     <label for="senha">Password</label>
                                                     <input type="password" class="form-control input-lg" name="pass_us" placeholder="Password" >
-                                                    <!--                                            <input type="hidden" name="pass_us" value="--><?//=$user_info['pass_user'];?><!--">-->
-                                                    <input type="hidden" name="id_us" value="<?=$user_info['id_user'];?>">
+
+
                                                 </div>
                                                 <!-- select -->
                                                 <div class="form-group">
@@ -90,7 +102,7 @@
                                                     <div class="col-xs-12">
                                                         <button value="Atualizar" class="btn btn-primary btn-lg pull-right"><i class="fa "></i>Atualizar</button>
                                                         <a href="<?= BASEADMIN ?>users" type="button" class="btn btn-primary btn-lg pull-right"
-                                                           style="margin-right: 5px;"> <i class="fa-fast-forward"></i> voltar</a>
+                                                           style="margin-right: 5px;"> <i class="fa fa-mail-reply-all"></i> voltar</a>
                                                     </div>
                                                 </div>
                                         </div>

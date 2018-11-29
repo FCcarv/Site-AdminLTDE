@@ -1,15 +1,6 @@
 <?php
-
-/*
- * Essa classe é usada apenas para alertas do sistema e pode usar um parametro  ou dois pararametros como disse o segundo parmaetro é opcional.
- * Parq usdar somente um parametro , dessa forma por exemplo o titulo ja erxiste como informação ou sucesso  etc .
- * Da mesma forma pode colocar um titulo diferente que seja esses padrãó, assim é só colocar o outro parametro.
- * Por exemplo ->$dados['retorno'] = Alert::AjaxWarning("alerta senha com mais de 8 digitos","Presta atenção");
- */
-
 /**
  * Description of Alert
- *
  * @author francisco
  */
 class Alert 

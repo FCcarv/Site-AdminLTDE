@@ -24,16 +24,16 @@ class usersController extends Controller
        $dados = [];
 
         $u = new Users();
+        $permite = new Permissao();
 
         $u->setLogUser();
-
         $dados['user_add_permission'] = $u->existPermissao('users_add');
         $dados['user_edit_permission'] = $u->existPermissao('users_edit');
         $dados['user_view_permission'] = $u->existPermissao('users_view');
         $dados['user_del_permission'] = $u->existPermissao('users_delet');
         if ($u->existPermissao('users_view')) {
-            $dados['users_list'] = $u->getListUsers($u->getId());
 
+            $dados['users_list'] = $u->getListUsers($u->getId());
             $this->loadTemplate('login/users', $dados);
         } else {
             header("Location: " . BASEADMIN);
@@ -62,6 +62,7 @@ class usersController extends Controller
     {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
 
         $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
 
@@ -95,12 +96,12 @@ class usersController extends Controller
         } else {
             $dados['retorno'] = Alert::AjaxWarning("Por favor preencha todos os campos!!");
         }
-    echo json_encode($dados);
-    exit();
+      $us->return_ajax_error($dados);
     }
 
 /*chama a view dee dição dos usuarios no painel em area restrita*/
-    public function editUS($id_us) {
+    public function editUS($id_us)
+    {
         $dados = [];
         $u = new Users();
         $permite = new Permissao();
@@ -117,10 +118,10 @@ class usersController extends Controller
     {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
         $u->setLogUser();
 
         if ($u->existPermissao('users_edit')) {
-            $dados = [];
 
             $dadosPerm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             $id_us = $dadosPerm['id_us'];
@@ -134,10 +135,9 @@ class usersController extends Controller
                 $dados['redirect'] = Alert::AjaxRedirect("users");
             }
         }else{
-          $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."home");
+          $dados['redirect'] = Alert::AjaxRedirect("home");
         }
-        echo json_encode($dados);
-        exit;
+        $us->return_ajax_error($dados);
     }
 
 /*Chama a view de atualização de fotos do painel admin*/
@@ -165,7 +165,7 @@ class usersController extends Controller
             $dadosPerm = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
 
             $dadosPerm['ftos_us'] = (!empty($_FILES['ftos_us']["name"]) ? $_FILES['ftos_us'] : NULL);
-           // var_dump($dadosPerm);die;
+
             $ftUpdate = $us->updateFto($dadosPerm);
             if ($ftUpdate !== true) {
 
@@ -173,31 +173,33 @@ class usersController extends Controller
                 $dados['redirect'] = Alert::AjaxRedirect("users/editUs/{$dadosPerm['id_us']}");
 
             } else {
-
                 $dados['retorno'] = Alert::AjaxDanger("<b>Erro ao atualizar Foto de Perfil!!</b>");
                 $dados['redirect'] = Alert::AjaxRedirect("users/editUs/{$dadosPerm['id_us']}");
             }
-
         $us->return_ajax_error($dados);
     }
     /*Deleta usuarios */
-    public function delete($id_us) {
-
+    public function delete()
+    {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
         $u->setLogUser();
-        $dados['id_user'] = $u->getId();
 
-        if ($u->existPermissao('users_delet')) {
-            $permite = new Permissao();
-            $dados['user_info'] = $u->getUserInfo($id_us);//retorna informações do usuario
-            $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
+        if (isset($_POST['id'])){
+            $id_us = $_POST['id'];
 
-            $u->delete($id_us);
-            header("Location: ".BASEADMIN."users");
-        }else{
-            header("Location: " . BASEADMIN);
+            $delUSER = $u->delete($id_us);
+            if ($delUSER == false) {
+                $dados['retorno'] = Alert::AjaxDanger("<b>Oppsss,você está tentando remover o único ADMIN do sistema ou remover seu próprio usuário. Essa ação não é permitida!!!</b>");
+                $dados['redirect'] = Alert::AjaxRedirect("users");
+            }else{
+                $dados['redirect'] = Alert::AjaxRedirect("users");
+            }
+        }else {
+            $dados['redirect'] = Alert::AjaxRedirect("home");
         }
+       $us->return_ajax_error($dados);
     }
 
 /*chama a view de atualização dos dados  do usuario*/
@@ -211,7 +213,6 @@ class usersController extends Controller
         $dados['infoUS'] = $u->selectID($id_us);//retorna informações do usuario
         $dados['grup_List'] = $permite->getGrupList();//retorna informações do Grupo de Permissao
 
-    //print_r($dados['id_user']);        exit;
         $this->loadTemplate('login/perfil', $dados);
    }
 /*atualiza informações do usuario na view perfil*/
@@ -219,6 +220,7 @@ class usersController extends Controller
     {
         $dados = [];
         $u = new Users();
+        $us = new UserRepository();
         $u->setLogUser();
 
         if ($u->existPermissao('users_perfil')) {
@@ -238,8 +240,7 @@ class usersController extends Controller
         }else{
             $dados['redirect'] = Alert::AjaxRedirect(BASEADMIN."home");
         }
-        echo json_encode($dados);
-        exit;
+      $us->return_ajax_error($dados);
     }
 
 /*Chama a view de usuario da area de perfil fora do painel*/

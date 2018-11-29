@@ -33,7 +33,7 @@
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><strong><?=$titulo_mensagem?></strong></h3>
                                         <div class="btn-group pull-right">
-                                            <a href="http://localhost/Portal-News/admin/home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                            <a href="<?= BASE?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
                                             <a href="<?=BASEADMIN?>message/editMsg/<?=$id_mensagem?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                             <a href="" class="btn btn-danger btn-xs del " data-controller="message/ExcluiMsg/" id="<?=$id_mensagem?>" onclick="return confirm('Tem certeza que deseja excluir essa Mensagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
                                         </div>

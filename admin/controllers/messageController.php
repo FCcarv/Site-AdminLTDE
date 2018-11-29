@@ -8,8 +8,6 @@
 
 class messageController extends Controller
 {
-
-
     public function __construct()
     {
         parent::__construct();
@@ -27,7 +25,6 @@ class messageController extends Controller
         $Msg =new MessagePost();
         $u->setLogUser();
         if ($u->existPermissao('msg_view')) {
-
             $dados['getAllMsg'] = $Msg->getMsg();
 
             $this->loadTemplate('msg/msgList', $dados);
@@ -36,15 +33,12 @@ class messageController extends Controller
         }
     }
 
-
         public function caddMsg()
     {
         $dados = [];
         $u = new Users();
         $u->setLogUser();
         if ($u->existPermissao('msg_view')) {
-
-
 
             $this->loadTemplate('msg/msgAdd', $dados);
         } else {

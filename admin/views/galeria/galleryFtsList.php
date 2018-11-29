@@ -36,11 +36,11 @@
                                     ?>
 
                                     <div class="col-sm-2 well well-sm margin">
-                                        <img class="img-responsive" src="<?= BASE . 'tim.php?src=uploads/' . $cover_fto_albuns . '&w=180&h=120'?>" alt="'Img' <?=$title_fto_albuns?> ">
+                                        <img class="img-responsive" src="<?= BASE . 'tim.php?src=uploads/' . $cover_fto_albuns . '&w=180&h=120'?>" alt="'Img' <?=$title_fto_albuns?>">
                                         <a href="<?= BASEADMIN ?>images/editFotosG/<?=$id_fto_albuns?>" class="name  text-center"><h4><?=$title_fto_albuns?></h4></a>
                                         <p class="text-center">Data: <?=date('d/m/Y', strtotime($date_fto_albuns))?></p>
                                         <div class="btn-group mtest-bt">
-                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                            <a href="<?= BASE?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
                                             <a href="<?= BASEADMIN ?>galImages/galFtEdit/<?=$id_fto_albuns?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                             <a href="" class="btn btn-danger btn-xs del " data-controller="galImages/galFtDel/"
                                                id="<?=$id_fto_albuns?>" onclick="return confirm('Tem certeza que deseja excluir este Álbum de Fotos?')">

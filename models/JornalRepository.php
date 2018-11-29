@@ -13,9 +13,10 @@ class JornalRepository extends JornalPost
     public function setArqGoogleDrive($FormJornal)
     {
         $this->title_jornal_exists($FormJornal['jorn_title']);
+        $FormJornal['jorn_slug'] = 'jr-'. $FormJornal['jorn_title'];
 
         $strg   = 'd/';
-        $mypdf = strpos( $FormJornal['jorn_url'], $strg );//verifica a ocorrencia "v=" na string
+        $mypdf = strpos( $FormJornal['jorn_url'], $strg );//verifica a ocorrencia "d/" na string
         if (!$mypdf === false) {
             $url = strip_tags(trim($FormJornal['jorn_url']));
             if (substr_count($url, 'google') == 1) {
@@ -34,6 +35,7 @@ class JornalRepository extends JornalPost
         $dadosGoogleDrive = [
             "titulo_jornal" => $FormJornal['jorn_title'],
             "link_jornal" => $fullUrl,
+            "slug_jornal" => Check::Name($FormJornal['jorn_slug'])
 
         ];
         return $this->InsertG_Drive_Link($dadosGoogleDrive);

@@ -125,7 +125,7 @@
                                                     <div class="form-group">
                                                         <label>Autor</label>
                                                         <input type="text" class="form-control input-lg" name="autor_post"
-                                                               value="<?= ($_SESSION['userlogin']['nome_user'] == $autor_post) ? $autor_post : '' ?>"/>
+                                                               value="<?= ($_SESSION['userlogin']['nome_user'] !== $autor_post) ? $autor_post : $_SESSION['userlogin']['nome_user'] ?>"/>
                                                     </div>
                                                     <br/>
                                                     <br/>

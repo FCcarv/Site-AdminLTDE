@@ -67,7 +67,7 @@
                                                             <div class="box-header with-border">
                                                                 <h3 class="box-title pull-left"><i class="glyphicon glyphicon-signal"></i>&nbsp;&nbsp;<strong>Sub-Categoria de&nbsp;<?= (isset($nome['title_categoria']) && $sub_categoria['parent_categoria'] == $nome['id_categoria']) ? $nome['title_categoria'] : '' ?></strong></h3>
                                                                 <div class="btn-group pull-right">
-                                                                    <a href="<?= BASEADMIN ?>home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                                    <a href="<?= BASE?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
                                                                     <a href="<?= BASEADMIN . "category/editCat/" . $sub_categoria['id_categoria']; ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                                                     <a href="<?= BASEADMIN . "category/delCat/" . $sub_categoria['id_categoria']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')"
                                                                        class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-ban-circle"></i></a>

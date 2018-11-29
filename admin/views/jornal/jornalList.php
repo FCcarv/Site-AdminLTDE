@@ -36,7 +36,7 @@
                                     <div class="col-sm-2 well well-sm margin">
                                           <span class=" pull-right margin-bottom">
                                            <div class="btn-group">
-                                                <a href="http://localhost/Portal-News/admin/home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                <a href="<?= BASE?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
                                                 <a href="<?= BASEADMIN ?>jornal/editJornal/<?=$id_jornal?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                                 <a href="" class="btn btn-danger btn-xs del " data-controller="jornal/excluiJornal" id="<?=$id_jornal?>" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
                                             </div>

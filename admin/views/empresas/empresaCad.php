@@ -55,13 +55,13 @@
                                             <div class="col-md-6 col-sm-12 col-xs-12">
                                                 ,<div class="form-group">
                                                     <label>Telefone</label>
-                                                    <input type="text" class="form-control input-lg formPhone" name="telefone_emp" required/>
+                                                    <input type="text" class="form-control input-lg formPhone" name="telefone_emp"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12">
                                                 ,<div class="form-group">
                                                     <label>Celular</label>
-                                                    <input type="text" class="form-control formPhone input-lg" name="cel_emp" required/>
+                                                    <input type="text" class="form-control formPhone input-lg" name="cel_emp"/>
                                                 </div>
                                             </div>
                                         </div>

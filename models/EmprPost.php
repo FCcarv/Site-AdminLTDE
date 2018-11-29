@@ -1,5 +1,11 @@
 <?php
-/*Classe Model de crud das Empresas clientes*/
+/**
+ * Classe Model de crud das Empresas clientes.
+ * User: franc
+ * Date: 29/11/18
+ * Time: 17:51
+ */
+
 
 
 

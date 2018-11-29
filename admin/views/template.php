@@ -18,7 +18,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/skins/_all-skins.min.css">
     <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/plugins/blue.css">
-    <link rel="stylesheet" href="<?= BASEADMIN ?>assets/plugins/shadowbox/shadowbox.css">
+
     <link rel="stylesheet" href="<?= BASEADMIN ?>assets/css/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,244 +50,31 @@
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="<?= BASEADMIN ?>assets/img/user2-160x160.jpg"
-                                                     class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="<?= BASEADMIN ?>assets/img/user3-128x128.jpg"
-                                                     class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="<?= BASEADMIN ?>assets/img/user4-128x128.jpg"
-                                                     class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="<?= BASEADMIN ?>assets/img/user3-128x128.jpg"
-                                                     class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="<?= BASEADMIN ?>assets/img/user4-128x128.jpg"
-                                                     class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that
-                                            may not fit into the
-                                            page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9  Aqui</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
-                                                     role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Create a nice theme
-                                                <small class="pull-right">40%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%"
-                                                     role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Some task I need to do
-                                                <small class="pull-right">60%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%"
-                                                     role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Make beautiful transitions
-                                                <small class="pull-right">80%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%"
-                                                     role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">80% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- User menu right -->
+                   <!-- User menu right -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>" class="user-image"
-                                 alt="User Image"/>
+                            <?php
+                            if(!empty($foto_user)):?>
+                                <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>" class="user-image" alt="User Image"/>
+                            <?php else:?>
+                                <img class="user-image" src="<?= BASEADMIN ?>/assets/img/ft-perfil/padrao.jpg" alt="User Image">
+                            <?php endif;
+                            ?>
                             <span class="hidden-xs"><?= $nome_user . ' ' . $sobrenome_user ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>"
-                                     class="img-circle" alt="User Image">
+                                <?php
+                                if(!empty($foto_user)):?>
+                                    <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>" class="img-circle" alt="User Image">
+                                <?php else:?>
+                                    <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/padrao.jpg" alt="User Image">
+                                <?php endif;?>
                                 <p>
-                                    <?= $nome_user . ' ' . $sobrenome_user ?> - Web Developer
-                                    <small><?= $email_user . ' - ' . $registro_user; ?></small>
+                                    <?= $nome_user . ' ' . $sobrenome_user ?>
+                                    <small><?= $email_user?></small>
                                 </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -314,8 +101,13 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>" class="img-circle"
-                         alt="User Image">
+                    <?php
+                    if(!empty($foto_user)):?>
+                        <img src="<?= BASEADMIN ?>assets/img/ft-perfil/<?= $foto_user ?>" class="img-circle" alt="User Image">
+                    <?php else:?>
+                        <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/padrao.jpg" alt="User Image">
+                    <?php endif;
+                    ?>
                 </div>
                 <div class="pull-left info">
                     <p><?= $nome_user . ' ' . $sobrenome_user ?></p>
@@ -336,9 +128,9 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MAIN NAVIGATION</li>
+                <li class="header">Menu de acesso</li>
                 <li class="active">
-                    <a href="#">
+                    <a href="<?= BASE?>">
                         <i class="fa fa-home"></i> <span>Site</span>
                     </a>
                 </li>
@@ -354,7 +146,6 @@
                     <ul class="treeview-menu">
                         <li><a href="<?= BASEADMIN ?>category/"><i class="fa fa-mail-forward "></i>Listar/Editar</a></li>
                         <li><a href="<?= BASEADMIN ?>category/add/"><i class="fa fa-paste"></i>Cadastrar</a></li>
-                        <li><a href="<?= BASEADMIN ?>category/teste"><i class="glyphicon glyphicon-trash"></i>testes</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -366,56 +157,56 @@
                         <li><a href="<?= BASEADMIN ?>post/add/"><i class="fa fa-paste"></i>Cadastrar</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="<?= BASEADMIN ?>dest/">
-                        <i class="fa  fa-rocket"></i> <span>Destaques</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= BASEADMIN ?>dest/"><i class="fa fa-mail-forward"></i>Listar/Editar</a></li>
-                        <li><a href="<?= BASEADMIN ?>dest/addDest"><i class="fa fa-paste"></i>Cadastrar</a></li>
-                    </ul>
-                </li>
+                <?php
+                   if($_SESSION['userlogin']['id_grup_permissao'] == 1){?>
+                           <li>
+                               <a href="<?= BASEADMIN ?>users/">
+                                   <i class="fa fa-users"></i><span>Users</span>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="<?= BASEADMIN ?>permissao">
+                                   <i class="fa fa-key"></i> <span>Permissões</span>
+                               </a>
+                           </li>
+                       <?php
+                       }else{
+                       echo"";
+                       }?>
+                     <?php if($_SESSION['userlogin']['id_grup_permissao'] <= 2){?>
+                       <li class="treeview">
+                           <a href="<?= BASEADMIN ?>gallery/">
+                               <i class="fa fa-dashboard"></i> <span>Galerias</span>
+                           </a>
+                           <ul class="treeview-menu">
+                               <li><a href="<?=BASEADMIN?>galImages/"><i class="fa fa-file-photo-o"></i>Imagens</a></li>
+                               <li><a href="<?= BASEADMIN ?>gallery/"><i class="fa fa-file-video-o"></i>Videos</a></li>
+                           </ul>
+                       </li>
+                       <li>
+                           <a href="<?= BASEADMIN ?>message/">
+                               <i class="fa fa-comments"></i> <span>Mensagens</span>
+                           </a>
+                       </li>
+                       <li class="treeview">
+                           <a href="<?= BASEADMIN ?>empresa/">
+                               <i class="fa fa-building-o"></i> <span>Empresas</span>
+                           </a>
+                           <ul class="treeview-menu">
+                               <li><a href="<?= BASEADMIN ?>empresa/"><i class="fa fa-file-video-o"></i>Listar/Editar</a></li>
+                               <li><a href="<?= BASEADMIN ?>empresa/empCad"><i class="glyphicon glyphicon-trash"></i>Cadastrar</a></li>
+                           </ul>
+                       </li>
+                       <li>
+                           <a href="<?= BASEADMIN ?>jornal/">
+                               <i class="fa fa-newspaper-o"></i> <span>Jornal</span>
+                           </a>
+                       </li>
+                    <?php
+                       }else{
+                       echo"";
+                   }?>
 
-                <li>
-                    <a href="<?= BASEADMIN ?>users/">
-                        <i class="fa fa-users"></i><span>Users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= BASEADMIN ?>permissao">
-                        <i class="fa fa-key"></i> <span>Permissões</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="<?= BASEADMIN ?>gallery/">
-                        <i class="fa fa-dashboard"></i> <span>Galerias</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= BASEADMIN ?>galImages/addGalftTeste"><i class="fa fa-file-photo-o"></i>Listar/Editar</a></li>
-
-                        <li><a href="<?=BASEADMIN?>galImages/"><i class="fa fa-file-photo-o"></i>Imagens</a></li>
-                        <li><a href="<?= BASEADMIN ?>gallery/"><i class="fa fa-file-video-o"></i>Videos</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="<?= BASEADMIN ?>message/">
-                        <i class="fa fa-comments"></i> <span>Mensagens</span>
-                    </a>
-                </li>
-               <li class="treeview">
-                    <a href="<?= BASEADMIN ?>empresa/">
-                        <i class="fa fa-building-o"></i> <span>Empresas</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= BASEADMIN ?>empresa/"><i class="fa fa-file-video-o"></i>Listar/Editar</a></li>
-                        <li><a href="<?= BASEADMIN ?>empresa/empCad"><i class="glyphicon glyphicon-trash"></i>Cadastrar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="<?= BASEADMIN ?>jornal/">
-                        <i class="fa fa-newspaper-o"></i> <span>Jornal</span>
-                    </a>
-                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -428,23 +219,9 @@
             <h4><i class="icon icones "></i><span class="titulo"></span></h4>
             <div class="result"></div>
         </div>
-        <!-- box alerta-->
-        <div class="wSite_upload">
-            <div class="wSite_upload_bar">
-                <span class="wSite_upload_progress">0%</span>
-                <p>Aguarde, enviando arquivos</p>
-            </div> <!-- box modal upload-->
 
-        </div>
-        <div class="trigger_modal"></div>
-        <!-- <div class="trigger_modal">
-             <div class="trigger trigger_ajax trigger_success" style="display: block;">
-                 <b class="icon-checkmark">
-                 <span class="ajax_close"></span>
-             </div>
-             </div>
-         </div>  box modal de erros-->
-        <?php $this->loadViewInTemplate($viewName, $viewData); ?>
+        <!-- box alerta-->
+         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
     </div>
     <!-- /.content-wrapper -->
    <!-- Control Sidebar -->
@@ -629,15 +406,14 @@
 <!-- ./wrapper -->
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+        <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2018 fccompany. <!--<a href="">fccompany</a>--></strong> Todos os Direitos Reservados.
 </footer>
 <!-- jQuery 3 -->
 <script src="<?= BASEADMIN ?>assets/js/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="<?= BASEADMIN ?>assets/plugins/shadowbox/shadowbox.js"></script>
+
 <script src="<?= BASEADMIN ?>assets/js/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>

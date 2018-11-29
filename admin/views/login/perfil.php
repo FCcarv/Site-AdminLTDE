@@ -39,7 +39,7 @@
                                                     if(!empty($infoUS['foto_user'])):?>
                                                         <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/<?=$infoUS['foto_user'];?>" width="180" />
                                                     <?php else:?>
-                                                        <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/user1-128x128.png" alt="User profile picture"width="180">
+                                                        <img class="img-circle" src="<?= BASEADMIN ?>/assets/img/ft-perfil/padrao.jpg" alt="User profile picture"width="180">
                                                     <?php endif;
                                                     ?>
                                                 </div>
@@ -47,11 +47,22 @@
                                                 <div class="nome-pf">
                                                     <h3 class="nome-us"><?=$infoUS['nome_user'] .' '.$infoUS['sobrenome_user'];?></h3>
                                                 </div>
-                                                <div class="box-body">
-                                                    <input type="file"  name="ftos_us[]" id="ftos">
-                                                    <input type="hidden" name="id_us" value="<?=$infoUS['id_user'];?>">
-                                                </div>
-                                                <button value="Atualizar" class="btn btn-sm btn-primary"><i class="fa fa-image"></i>&nbsp;Atualizar Foto</button>
+                                                <?php if (! $_SESSION['userlogin']['id_grup_permissao'] == 0){?>
+                                                    <div class="col-md-offset-1 box-body">
+                                                        <input type="file"  name="ftos_us"/>
+                                                        <input type="hidden" name="id_us" value="<?=$user_info['id_user'];?>">
+                                                    </div>
+                                                    <button value="Atualizar" class="col-md-offset-1 btn btn-primary"><i class="fa fa-image"></i>Atualizar Foto</button>
+                                                <?
+                                                }else{
+
+                                                    echo "<div class=\"alert alert-danger alert-dismissible\">
+                                                           <h4><i class=\"icon fa fa-info\"></i>Opss!!
+                                                        Seu cadastro esta limitado, por favor fale com admin para a liberação do seu acesso.</br>
+                                                                <strong>Email: fccarlos.carvalho@gmail.com</strong></h4>
+                                                  </div>";
+                                                }?>
+
                                             </div>
                                         </form>
                                     </div>

@@ -38,7 +38,7 @@
                                                 <a href="javascript:void(0)" class="product-title"><strong><?=$marca_cliente_empresa?></strong></a>
                                                 <span class=" pull-right">
                                                <div class="btn-group">
-                                                    <a href="<?= BASEADMIN?>home/" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
+                                                    <a href="<?= BASE?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-desktop"></i></a>
                                                     <a href="<?= BASEADMIN ?>empresa/EmpEdit/<?=$id_cliente_empresa?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                                     <a href="" class="btn btn-danger btn-xs del " data-controller="empresa/excluiEmp/" id="<?=$id_cliente_empresa?>" onclick="return confirm('Tem certeza que deseja excluir esta Postagem?')"><i class="glyphicon glyphicon-ban-circle"></i></a>
                                                 </div>

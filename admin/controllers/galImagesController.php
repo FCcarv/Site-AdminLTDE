@@ -3,7 +3,6 @@
  * Controller dos models e Views da galeria de Imagens
  * Apenas a gestão das galerias, foto de capa etc.
  */
-
 class galImagesController extends Controller
 {
     public function __construct()
@@ -15,7 +14,6 @@ class galImagesController extends Controller
             exit;
         }
     }
-
     public function index()
     {
         $dados = [];
@@ -29,7 +27,6 @@ class galImagesController extends Controller
             header("Location: " . BASEADMIN);
         }
     }
-
     /*Puxa a view e de cadastro das galerias*de fotos*/
     public function galFtadd()
     {
@@ -37,22 +34,18 @@ class galImagesController extends Controller
         $u = new Users();
         $u->setLogUser();
         if ($u->existPermissao('galleryFts_view')) {
-
             $this->loadTemplate('galeria/galleryFtsCadd', $dados);
         } else {
             header("Location: " . BASEADMIN);
         }
     }//
-
     /*adiciona e cadastra  as galerias de fotos*/
     public function addgal()
     {
         $dados = [];
         $u = new Users();
         $galRp = new GallRepository();
-
         $u->setLogUser();
-
         $FormGallery = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
         $addG = $galRp->addGalImage($FormGallery);
         if ($addG == true) {
@@ -60,8 +53,7 @@ class galImagesController extends Controller
             $dados['redirect'] = Alert::AjaxRedirect("galImages");
         }
         $galRp->return_ajax_error($dados);
-      }
-
+    }
     /*Edita as galerias de imagens, enviando os dados e puxando  a view praa o controle*/
     public function galFtEdit($id_gal)
     {
@@ -70,22 +62,18 @@ class galImagesController extends Controller
         $gal = new GalPost();
         $u->setLogUser();
         if ($u->existPermissao('galleryFts_view')) {
-
             $dados['getDadosGal'] = $gal->getIDGal($id_gal);
             $this->loadTemplate('galeria/galleryFtsEdit', $dados);
         } else {
             header("Location: " . BASEADMIN);
         }
     }//
-
     public function postExist()
     {
         $dados = [];
         $gal = new GalPost();
         $galRp = new GallRepository();
-
         $dados_Form = filter_input(INPUT_POST, 'post_title', FILTER_DEFAULT);
-
         if ($gal->setTitleGal($dados_Form) == true) {
             $dados['postExist'] = true;
             $dados['retorno'] = Alert::AjaxInfo("<b>Esse Titulo <ins>{$dados_Form}</ins> já existe.
@@ -93,10 +81,9 @@ class galImagesController extends Controller
                 <button class='btn btn-primary manterTitlePost'>Manter</button>
                 <button class='btn btn-warning mudarTitlePost'>Mudar</button>
                 </p>");
-         $galRp->return_ajax_error($dados);
+            $galRp->return_ajax_error($dados);
         }
     }
-
     /*atualiza as galerias de fotos e a parte de status das mesmas*/
     public function editgal()
     {
@@ -105,12 +92,9 @@ class galImagesController extends Controller
         $gal = new GalPost();
         $galRp = new GallRepository();
         $u->setLogUser();
-
         $FormGallery = filter_input_array(INPUT_POST, FILTER_SANITIZE_MAGIC_QUOTES);
-
         $GalFts_up = $galRp->upGalImage($FormGallery);
         $GalFtsStatus = $gal->setStatusGal($FormGallery['id_galft']);
-
         if (isset($GalFts_up) && $GalFts_up == true) {
             if (($GalFts_up == true) && $GalFtsStatus === false) {
                 $dados['retorno'] = Alert::AjaxSuccess("<b>O álbum <ins>{$FormGallery['title_galft']}</ins> foi atualizado como rascunho!</b>");
@@ -125,7 +109,6 @@ class galImagesController extends Controller
         }
         $galRp->return_ajax_error($dados);
     }
-
     /*Exclui as galerias de imagens verificando se as fotos  nos  ditetorios*/
     public function galFtDel()
     {
@@ -134,61 +117,24 @@ class galImagesController extends Controller
         $gal = new GalPost();
         $galRp = new GallRepository();
         $u->setLogUser();
-
         if (isset($_POST['id'])) {
             $idGalf = $_POST['id'];
-
             //verifica se tem img na pasta de capa e deleta
             $capa = $gal->setCoverGalFt($idGalf);
             $coverGalCapa = "../uploads/" . $capa['cover_fto_albuns'];
             if (file_exists($coverGalCapa) && !is_dir($coverGalCapa)) {
                 unlink($coverGalCapa);
             }
-
             //exclui o Album de fotos
             $deletGalFt = $gal->ExcluiGalFt($idGalf);
             if ($deletGalFt == true) {
                 $dados['retorno'] = Alert::AjaxSuccess(true);
                 $dados['redirect'] = Alert::AjaxRedirect("galImages");
             }
-
         } else {
             $dados['redirect'] = Alert::AjaxRedirect("home");
         }
         $galRp->return_ajax_error($dados);
     }
 
-    /*####################### teste ###########################*/
-
-    public function addGalftTeste()
-    {
-        $dados = [];
-        $u = new Users();
-        //$gal = new GalPost();
-        $u->setLogUser();
-        if ($u->existPermissao('galleryFts_view')) {
-
-            // $dados['getDadosGal'] = $gal->getIDGal();
-
-            $this->loadTemplate('galeria/gTest', $dados);
-        } else {
-            header("Location: " . BASEADMIN);
-        }
-    }//
-
-    public function GalTeste()
-    {
-        $dados = [];
-        $u = new Users();
-        //$gal = new GalPost();
-        $u->setLogUser();
-        if ($u->existPermissao('galleryFts_view')) {
-
-            // $dados['getDadosGal'] = $gal->getIDGal();
-
-            $this->loadTemplate('galeria/galList', $dados);
-        } else {
-            header("Location: " . BASEADMIN);
-        }
-    }//
 }

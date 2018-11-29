@@ -25,7 +25,7 @@
             direction: 'horizontal',
             touchEventsTarget: 'container',
             initialSlide: 0,
-            speed: 300,
+            speed: 600,
             // autoplay
             autoplay: false,
             autoplayDisableOnInteraction: true,

@@ -1727,10 +1727,6 @@ shortcodes page css
   color: #08c;
 }
 
-#bottom .widget {
-  margin-bottom: 0;
-}
-
 #bottom ul.icons {
    cursor: default;
     list-style: none;
@@ -1770,7 +1766,13 @@ shortcodes page css
   margin-left: 15px;
 }
 
+@media (max-width:42em) {
+  .widget {
+    margin-bottom: 60px;
+    padding-left: 40px;
+  }
 
+}
 
 
 

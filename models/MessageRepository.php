@@ -19,8 +19,6 @@ class MessageRepository extends MessagePost
 
     public function editarMsg($FormMsg)
     {
-        $this->titleExists($FormMsg['msg_title']);
-
         //verifica se o usuario quer mater ou não o mesmo titulo
         if($FormMsg['title_exist'] == '0') {
             $this->updateMessage($FormMsg);//
@@ -33,8 +31,7 @@ class MessageRepository extends MessagePost
             $this->return_ajax_error($this->dados);
         }
         return true;
-        //var_dump($FormMsg);
-    }
+     }
 
     //retorna resposta do ajax
     public function return_ajax_error($data)
