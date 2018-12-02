@@ -47,13 +47,16 @@ class homeController extends Controller {
         $this->loadTemplate('jornal/viewsEdicao', $dados);
     }
 
-    public function noticias($slugPg)
+    public function noticias($idpost)
     {
         $homepags = new HomePag();
 
         $dados = [];
 
-        $dados['Artigos']  = $homepags->postsPag($slugPg);
+        $dados['Artigos']  = $homepags->postsPag($idpost);
+       $dados['GalleryPosts']  = $homepags->imgGalleryPost($idpost);
+       $dados['postsDest']  = $homepags->PostsDestaq($idpost);
+        $dados['msgPost'] = $homepags->Msgs();
 
         $this->loadTemplate('news/pagPost', $dados);
     }

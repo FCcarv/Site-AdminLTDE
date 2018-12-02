@@ -1,9 +1,8 @@
 @charset "UTF-8";
-/*@font-face {
+*{
+    font-family:'Hind', sans-serif;
+}
 
-      font-family: "Elephant ";
-      src: url("ELEPHNT.ttf") format("truetype");
-      }*/
 .blockquote,
 .btn-theme p {
     line-height: 1.4;
@@ -49,9 +48,7 @@ h6,
 li,
 li a,
 p,
-span {
-    font-family: Hind,Elephant , sans-serif
-}
+
 
 .back-to-top:focus,
 .back-to-top:hover,
@@ -1646,7 +1643,9 @@ iframe[style]{
 }
 
 .tagline2 {
-    text-align: justify;font-weight: 0.9em;}
+    text-align: justify;
+    font-weight: bold;
+}
 
 * {
     -webkit-box-sizing: border-box;
@@ -1828,3 +1827,10 @@ img.scale-with-grid {
 .container .five.columns                    { width: 280px; }
 .container .six.columns                     { width: 340px; }
 .container .seven.columns                   { width: 400px; }
+
+.sider-post{
+    margin-left: 20px;
+}
+ .featured-text{
+     max-width: 80%;
+ }

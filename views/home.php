@@ -90,7 +90,7 @@
                     </div>
                     <h4><a href="#"><?=$title_post?></a> <span class="text-uppercase margin-l-20">Por: <?=$autor_post?></span></h4>
                     <p><?=Check::Words($content_post, 30) ?></p>
-                    <a class="link" href="<?BASE?>home/noticias/<?=$slug_post?>">Veja mais ...</a>
+                    <a class="link" href="<?BASE?>home/noticias/<?=$id_post?>">Veja mais ...</a>
                 </div>
                 <!-- End Latest Products -->
             <?php

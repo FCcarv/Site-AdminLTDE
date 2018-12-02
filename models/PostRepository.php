@@ -10,6 +10,20 @@ class PostRepository extends Post
 {
     private $dados;
     private $ajax_error;
+    public  $DirTiny;
+
+    /**
+     * Verifica e cria o diretório padrão de uploadsdo TinyMCE no sistema!<br>
+     * <b>../imageTinymce/</b>
+     */
+    public function dirTiny($DirTiny = null) {
+
+        $DirTiny = ((string) $DirTiny ? $DirTiny : '/imageTinymce/');
+        if (!file_exists($DirTiny) && !is_dir($DirTiny)):
+            mkdir($DirTiny, 0777);
+        endif;
+    }
+
 
     //metodo de cadastro no bando incluir a galeria
     public function addPost($dados_Form)
@@ -67,7 +81,7 @@ class PostRepository extends Post
 
         return true;
     }
-
+//metodo fazo upload no tinyMCE
     public function imgContent($imgCont, $idPopst)
     {
         $nomeImag = "Img-Content";
@@ -119,7 +133,6 @@ class PostRepository extends Post
     //retorna  se o titulo do post estiver vazio e existir  outro com mesmo nome
     public function title_exists($dados_Form)
     {
-
         if ($this->setpost($dados_Form) == true) {
             $this->dados['retorno'] = Alert::AjaxDanger("<b>Esse Titulo <ins>{$dados_Form}</ins> já existe.
                 <p>

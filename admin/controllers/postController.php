@@ -270,11 +270,13 @@ class postController extends Controller
     public function sendImgTinymce()
     {
         $u = new Users();
+        $pst = new PostRepository();
         $u->setLogUser();
 
         if ($u->existPermissao('posts_edit_view')) {
 
             $imageFolder = "../imageTinymce/";
+            $pst->dirTiny($imageFolder);
             $temp = current($_FILES);
 
             if (is_uploaded_file($temp['tmp_name'])) {

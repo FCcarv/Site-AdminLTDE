@@ -23,10 +23,9 @@
         <link href="<?= BASE?>assets/css/style-editor.css" rel="stylesheet" type="text/css"/>
         <link href="<?= BASE?>assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="<?= BASE?>assets/plugins/f-awesome/css/font-awesome.css">
-        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">-->
+
         <!-- Favicon -->
         <link rel="shortcut icon" href="<?= BASE?>assets/imagem/favicon.png"/>
-
     </head>
     <!-- BODY -->
     <body>
@@ -44,7 +43,7 @@
 
                         <!-- Logo -->
                         <div class="logo">
-                            <a class="logo-wrap" href="index.html">
+                            <a class="logo-wrap" href="<?= BASE?>">
                                 <img class="logo-img logo-img-main" src="<?= BASE?>assets/imagem/logo-dark.png"  alt=" Logo-site">
                                 <img class="logo-img logo-img-active" src="<?= BASE?>assets/imagem/logo-dark.png"  alt=" Logo-site">
                             </a>
@@ -56,7 +55,7 @@
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
                             <ul class="navbar-nav navbar-nav-right">
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="<?= BASE?>">Home</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">Blog</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">Sobre nós</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">Contato</a></li>
@@ -140,17 +139,19 @@
         <script src="<?= BASE?>assets/js/jquery.back-to-top.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/jquery.smooth-scroll.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/jquery.wow.min.js" type="text/javascript"></script>
+        <script src="<?= BASE?>assets/js/swiper.jquery.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/swiper.jquery.min.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
         <!-- PAGE LEVEL SCRIPTS -->
         <script src="<?= BASE?>assets/js/layout.min.js" type="text/javascript"></script>
-        <script src="<?= BASE?>assets/js/components/wow.min.js" type="text/javascript"></script>
+        <script src="<?= BASE?>assets/js/wow.min.js" type="text/javascript"></script>
 
-        <script src="<?= BASE?>assets/js/components/swiper.min.js" type="text/javascript"></script>
-        <script src="<?= BASE?>assets/js/maps/swiper.jquery.min.js.map" type="text/javascript"></script>
-        <script src="<?= BASE?>assets/js/components/masonry.min.js" type="text/javascript"></script>
+        <script src="<?= BASE?>assets/js/swiper.js" type="text/javascript"></script>
+
+
+        <script src="<?= BASE?>assets/js/masonry.min.js" type="text/javascript"></script>
         <script src="<?= BASE?>assets/js/scripts.js" type="text/javascript"></script>
 
         <script type="text/javascript">

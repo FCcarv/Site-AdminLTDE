@@ -171,10 +171,23 @@ class HomePag extends Model
 
 
     /*Seleciona apenas 3 de todos posts como Destaques*/
-    public function postsPag($slugPosts)
+    public function postsPag($idPosts)
     {
-        $sql = $this->db->prepare("SELECT * FROM posts WHERE slug_post= :slugPosts");
-        $sql->bindValue(":slugPosts", $slugPosts);
+
+        $sql = $this->db->prepare("SELECT * FROM posts WHERE id_post= :idPost");
+        $sql->bindValue(":idPost", $idPosts);
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0)
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }//
+    }
+
+    public function PostsDestaq($idpt)
+    {
+        $sql = $this->db->prepare("SELECT * FROM posts ORDER BY id_post != $idpt DESC LIMIT 2");
         try {
             $sql->execute();
             if ($sql->rowCount() > 0)
@@ -273,6 +286,22 @@ class HomePag extends Model
     public function Msgs()
     {
         $sql = $this->db->prepare("SELECT * FROM mensagens ORDER BY id_mensagem DESC");
+        try {
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+//Busaca as imagens da galeria dos posts
+    public function imgGalleryPost($id_post)
+    {
+        $sql = $this->db->prepare("SELECT * FROM posts_gallery WHERE id_post = $id_post ORDER BY id_gallery ASC");
+        $sql->bindValue(":idpost", $id_post);
         try {
             $sql->execute();
             if ($sql->rowCount() > 0) {

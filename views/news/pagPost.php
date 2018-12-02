@@ -20,62 +20,76 @@
                     <h3><?=$subtitle_post?></h3>
                     <?=$content_post?>
                 </article>
-                <!-- End main Content -->
                     <?php
                     endforeach;
                 }?>
+                <!-- End main Content -->
+                <div class=" box-header with-border">
+
+                </div>
+                <div class="box-body">
+                    <div class="col-md-11">
+                        <div class="row">
+                            <?php
+                            if(!empty($GalleryPosts)){?>
+                               <h2><i class="fa fa-file-photo-o"></i>
+                                    Galeria
+                                </h2>
+                            <?php
+                            foreach($GalleryPosts as $gall):
+                            extract($gall)?>
+                            <div class="col-sm-3 well well-sm margin">
+                                <a title="'Image-<?= $id_gallery ?>'" href="<?= BASE . 'uploads/' . $image_gallery?>" alt="'Post-Foto-gallery-'<?= $id_gallery ?>" rel="shadowbox[vocation]">
+                                    <img title="'Image-'<?= $id_gallery ?>"class="img-responsive"
+                                         src="<?= BASE . 'tim.php?src=uploads/' . $image_gallery . '&w=940&h=625' ?>" alt="'Post-Foto-gallery-'<?= $id_gallery ?>">
+                                </a>
+                            </div>
+                            <?php
+                            endforeach;
+                            }?>
+                        </div>
+                   </div>
+                     <!-- /.box-footer -->
+                </div>
+
             </div>
             <div class="col-md-4">
             <aside class="six columns right-sidebar">
-
-                <div class="sidebar-widget social">
-                    <h2>O que acha?</h2>
-                    <p>Textos relacionados com assunto do artigo</p>
+                <?php
+                if(!empty($postsDest)){
+                foreach($postsDest as $dest):
+                extract($dest)?>
+                <div class="sidebar-widget social sider-post">
+                    <h3><?=$title_post?></h3>
+                    <p><?=Check::Words($subtitle_post, 30) ?></p>
                     <div class="featured-image img-wrapper">
-                        <img src="<?=BASE?>assets/imagem/news/corrida1.jpeg" class="scale-with-grid thumb-link">
+                       <img class="img-responsive scale-with-grid"  src="<?= BASE . 'tim.php?src=uploads/' . $cover_post . '&w=270&h=180'?>" alt="Photo-<?=$slug_post?>">
                     </div>
-                    <p>Beef strip steak corned beef, shoulder short loin bresaola bacon filet mignon turkey pork chop
-                        swine spare ribs shoulder jerky shankle pork belly ball tip leberkas pork chop biltong.
-                        Andouille ball tip leberkas, shoulder pork loin chuck hamburger beef strip steak.</p>
+                    <div class="featured-text">
+                        <?=Check::Words($content_post, 25) ?>
+                        <a class="" href="<?=$id_post?>"><b>Veja mais ...</b></a>
+                    </div>
+                    </br>
+
                 </div>
-
-
-                <div class="recent-posts sidebar-widget six columns">
-                    <h2>Artigo 2</h2>
-                    <article class="six columns alpha">
-
-                        <div class="two columns alpha">
-                            <div class="featured-image img-wrapper">
-                                <img src="<?=BASE?>assets/imagem/news/corrida1.jpeg" class="scale-with-grid thumb-link">
-                            </div>
-                        </div>
-
-                        <div class="four columns omega">
-                            <h4><a href="#">Titulo do artigo 2</a></h4>
-
-                        </div>
-
-                    </article>
-                </div>
-
+                <?php
+                endforeach;
+                }?>
                 <div class="sidebar-widget">
-                    <h2>Citações de Motivação de Corrida</h2>
+                    <h3 class="sider-post .featured-text">Citações de Motivação de Corrida</h3>
+                    <?php
+                    if(!empty($msgPost)){
+                    foreach($msgPost as $ms):
+                    extract($ms)?>
                     <blockquote class="testimonial no-after">
-                        Icebrrrg is so pretty and easy to use it makes you feel like you can do anything.  Even fly.  Which for me, is huge!
-                        <cite>A Daredevil Penguin</cite>
+                       <strong><?=$titulo_mensagem?></strong></br>
+                        <?=Check::Words($descricao_mensagem, 50)?></br></br>
+                        <cite><?=$autor_mensagem?></cite><p class="pull-right"><?=$fonte_mensagem?></p>
                     </blockquote>
-
-                    <blockquote class="testimonial no-after">
-                        Icebrrrg looked so smooth and tasty that I decided to lick it.  Of course, it was ice cold so my tongue got stuck to it!
-                        <cite>Overeager Polar Bear</cite>
-                    </blockquote>
-
-                    <blockquote class="testimonial no-after">
-                        80% of Iceberrrg's mass is beneath the surface. Super detailed grid.
-                        <cite>Dr. Freeze</cite>
-                    </blockquote>
+                    <?php
+                    endforeach;
+                    }?>
                 </div>
-
             </aside>
             <!-- End Right Sidebar -->
              </div>

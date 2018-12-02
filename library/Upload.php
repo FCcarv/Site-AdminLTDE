@@ -30,15 +30,9 @@ class Upload {
      */
     function __construct($BaseDir = null) {
 
-        //usar apenas em servidor local linux, caso contrario apague as 2 linhas abaixo e descomente a linha comentada.
-        // $command = "chmod 0777 -R /opt/lampp/htdocs/Fatiando-AdminLTE/uploads/*";
-        // $output = shell_exec($command);
-        //self::$BaseDir = ( (string) $BaseDir ? $BaseDir : $output);
         self::$BaseDir = ((string) $BaseDir ? $BaseDir : '/uploads/');
         if (!file_exists(self::$BaseDir) && !is_dir(self::$BaseDir)):
             mkdir(self::$BaseDir, 0777);
-            // chmod(self::$BaseDir, 0777, true);
-
         endif;
     }
 
